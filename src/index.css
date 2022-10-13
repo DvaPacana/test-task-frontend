@@ -1,0 +1,17 @@
+* {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  background: rgb(212, 212, 212);
+}
+main {
+  display: grid;
+  width: calc(100% - 40px);
+  height: calc(100vh - 40px);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 2fr;
+  gap: 10%;
+  padding: 20px;
+}
