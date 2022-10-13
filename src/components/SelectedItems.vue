@@ -4,6 +4,10 @@
             <div v-for="item in selected" :key="item.id" class="item">
                 {{ item.name }}
             </div>
+
+            <div class="count"> 
+                Selected: {{ selected.length }} / {{ limit }}
+            </div>
         </div>
         <ul>
             <li v-for="item in collection" :key="item.id" @click="handleClick(item)">
@@ -18,6 +22,7 @@
     name: 'SelecteItems',
     data: () => ({
         selected: [],
+        limit: 6,
         collection: [
             {
                 "id": 1,
@@ -55,10 +60,9 @@
     }),
     methods: {
         handleClick(item) {
-            let limit = 6;
             let arr = this.selected
 
-            if (arr.length < limit) {
+            if (arr.length < this.limit) {
                 arr.indexOf(item) === -1 ? arr.push(item) : console.log("exists")
             }           
         }
@@ -67,38 +71,30 @@
   </script>
   
   <style scoped>
-
     .items-container {
+        position: relative;
         display: flex;
-        flex-wrap: wrap;
-        width: 500px;
-        height: 100px;
-        border: 5px solid rgb(0, 0, 0);
+        align-items: center;
+        border: 5px solid #000;
         margin-bottom: 1rem;
     }
 
+    .items-container:before{
+        content: "";
+        display: block;
+        padding-top: 10rem;
+    }
+
     .item {
-        border: 2px solid #ccc;
-        height: max-content;
+        border: 2px solid rgb(20, 17, 17);
         padding: 4px;
         margin: 4px;
     }
 
-    ul {
-        margin: 0;
-        padding: 1rem;
-        border: 5px solid black;
-    }
-
-    li {
-        list-style: none;
-        border: 1px solid #ccc;
-        padding: 4px;
-        cursor: pointer;
-    }
-
-    li:not(:last-child) {
-        margin-bottom: 4px;
+    .count {
+        position: absolute;
+        bottom: 0;
+        left: 4px;
     }
   </style>
   

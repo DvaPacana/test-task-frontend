@@ -65,27 +65,24 @@
   
   <style scoped>
     .item {
-        width: 500px;
-        height: 100px;
+        position: relative;
         border: 5px solid rgb(0, 0, 0);
         margin-bottom: 1rem;
     }
 
-    ul {
+    .item:before{
+        content: "";
+        display: block;
+        padding-top: 10rem;
+    }
+
+    h1 {
         margin: 0;
-        padding: 1rem;
-        border: 5px solid black;
-    }
-
-    li {
-        list-style: none;
-        border: 1px solid #ccc;
-        padding: 4px;
-        cursor: pointer;
-    }
-
-    li:not(:last-child) {
-        margin-bottom: 4px;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
   </style>
   

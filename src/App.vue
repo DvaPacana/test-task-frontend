@@ -24,16 +24,32 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-}
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
 
+  ul {
+        margin: 0;
+        padding: 1rem;
+        border: 5px solid black;
+    }
+
+  li {
+      list-style: none;
+      border: 1px solid #ccc;
+      padding: 4px;
+      cursor: pointer;
+  }
+
+  li:not(:last-child) {
+      margin-bottom: 4px;
+  }
 </style>
