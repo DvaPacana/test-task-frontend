@@ -7,6 +7,10 @@
 						:selected="users_stuff_selected"
 						@remove-selected-item="removeSelectedItems"
 					)
+					ProductsCounter(
+						:selected_quantity="users_stuff_selected.size"
+						:allowable_amount="users_stuff_max_quantity"
+					)
 				.products__body
 					ProductsListComponent(
 						:items="users_stuff"
@@ -30,18 +34,21 @@
 <script setup lang="ts">
 import ProductsSelectComponent from "@/components/ProductsSelectComponent.vue"
 import ProductsListComponent from "@/components/ProductsListComponent.vue"
-import { reactive, onMounted } from "vue"
+import { reactive, onMounted, ref } from "vue"
 import type { ProductInterface } from "@/interface/product.interface"
 import ProductService from "@/service/product.service"
+import ProductsCounter from "@/components/ProductsCounter.vue"
 
 const users_stuff: Array<ProductInterface> = reactive([])
+const users_stuff_max_quantity = ref<number>(6)
+
 const things_to_choose: Array<ProductInterface> = reactive([])
 
 const users_stuff_selected: Set<ProductInterface> = reactive(new Set())
 const things_to_choose_selected: Set<ProductInterface> = reactive(new Set())
 
 const selectedItems = (data: ProductInterface): void => {
-	if (users_stuff_selected.size < 6) {
+	if (users_stuff_selected.size < users_stuff_max_quantity.value) {
 		users_stuff_selected.add(data)
 	}
 }
@@ -93,11 +100,15 @@ onMounted(() => {
 
 	&__head
 		display flex
-		width 100%
+		flex-direction column
+		width 70%
+		background-color #fafafa
+		border 1px solid #2d2d2d
+		padding 20px
 
 	&__right
 		& ^[0]__head
-			justify-content flex-end
+			align-self flex-end
 
 	&__body
 		width 100%

@@ -34,11 +34,8 @@ const removeItem = (id: number): void => {
 
 <style lang="stylus">
 .products-select
-	width 70%
+	width 100%
 	height 200px
-	background-color #fafafa
-	border 1px solid #2d2d2d
-	padding 20px
 	display grid
 	grid-template-columns repeat(3, 1fr)
 	grid-gap 20px
