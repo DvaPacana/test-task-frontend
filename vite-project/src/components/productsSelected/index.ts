@@ -1,0 +1,1 @@
+export { default as ProductsSelected } from './productsSelected.vue'

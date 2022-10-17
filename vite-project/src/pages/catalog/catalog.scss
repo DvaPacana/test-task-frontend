@@ -1,0 +1,19 @@
+.catalog {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: calc(50% - 2vw);
+    
+  }
+  &__selected {
+    margin-bottom: 2vh;
+    &.--product-show {
+      margin-bottom: auto;
+    }
+  }
+}
