@@ -4,8 +4,8 @@
       <select-wrapper
         multiple
         :items="selectedItems"
-        :max-items-count="userClothes.length"
-        @removed-user-item="userItemRemove"
+        :max-items-count="8"
+        @removed-item="userItemRemove"
       />
       <select-wrapper
         :items="selectedItem"
@@ -124,6 +124,7 @@ export default {
 
     userItemRemove(evt) {
       this.selectedItems.splice(this.selectedItems.indexOf(evt), this.MAX_REMOVES_ITEM_COUNT);
+      console.log(evt);
       this.userClothes.push(evt);
     },
 
