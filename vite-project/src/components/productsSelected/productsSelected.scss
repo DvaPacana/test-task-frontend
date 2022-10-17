@@ -1,0 +1,19 @@
+.products-selected {
+  margin-bottom: 6vh;
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: -1vw;
+    margin-right: -1vw;
+  }
+  &__item {
+    width: calc(25% - (1vw * 3) / 4);
+    margin-top: 1vw;
+    margin-right: 1vw;
+  }
+  &__counter {
+    margin-top: 5vh;
+    text-align: center;
+  }
+}

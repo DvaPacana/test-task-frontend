@@ -1,0 +1,21 @@
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 40px;
+  transition: var(--transition);
+  cursor: pointer; 
+  border-radius: 10px;
+  border: 1px solid var(--border-gray);
+  &:hover {
+    box-shadow: var(--shadow);
+  }
+  &__id {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    color: var(--text-gray);
+  }
+}
