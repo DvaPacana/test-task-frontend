@@ -1,14 +1,4 @@
-<!-- title: Тестовое задание -->
-<p>
-    <h1 align="center">Тестовое задание VueJS</h1>
-    <br>
-</p>
-
-> После пуша Vue в ваш репозиторий, сделайте задание в любой другой ветке и PR в основную.  
-> Подойдет как Vue2, так и Vue3
-
-</br>
-
+# test-task-frontend
 
 ![IMAGE](image.png "Image")
 
@@ -113,3 +103,26 @@
     }
 ]
 ```
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
