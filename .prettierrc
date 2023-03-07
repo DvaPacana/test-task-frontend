@@ -1,0 +1,22 @@
+{
+	"tabWidth": 4,
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": ["*.vue"],
+			"options": {
+				"scriptSetup": {
+					"singleQuote": true,
+					"semi": false
+				}
+			}
+		},
+		{
+			"files": ["*.js"],
+			"options": {
+				"singleQuote": true,
+				"semi": false
+			}
+		}
+	]
+}
