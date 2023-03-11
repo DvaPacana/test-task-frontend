@@ -4,7 +4,7 @@
       <div class="container__area container__area_small">
         <Item
           v-for="(item, index) in selectedUserItems"
-          @onClicked="deleteSelectedUserItem(index)"
+          @click="deleteSelectedUserItem(index)"
           :name="item.name"
           :key="item.id"
         />
@@ -13,7 +13,7 @@
       <div class="container__area container__area_small">
         <Item
           v-if="selectedCommonItem"
-          @onClicked="() => selectedCommonItem = null"
+          @click="() => selectedCommonItem = null"
           :name="selectedCommonItem.name"
         />
       </div>
@@ -22,7 +22,7 @@
       <div class="container__area">
         <Item
           v-for="item in userItems"
-          @onClicked="setSelectedUserItems(item)"
+          @click="setSelectedUserItems(item)"
           :name="item.name"
           :key="item.id"
         />
@@ -30,7 +30,7 @@
       <div class="container__area">
         <Item
           v-for="item in userItems"
-          @onClicked="() => selectedCommonItem = item"
+          @click="() => selectedCommonItem = item"
           :name="item.name"
           :key="item.id"
         />
@@ -133,11 +133,5 @@ export default {
   position: absolute;
   bottom: 4px;
   right: 8px;
-}
-
-@media screen and (max-width: 585px) {
-  .input {
-    width: 228px;
-  }
 }
 </style>

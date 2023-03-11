@@ -1,5 +1,5 @@
 <template>
-  <button @click="emit" class="item">
+  <button @click="handleClick" class="item">
     {{ name }}
   </button>
 </template>
@@ -14,8 +14,8 @@
       },
     },
     methods: {
-      emit() {
-        this.$emit('onClicked');
+      handleClick() {
+        this.$emit('click');
       }
     },
     
