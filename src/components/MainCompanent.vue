@@ -49,8 +49,8 @@ export default {
 
 	data() {	
 		return { 
-			selectedUserItems: [], // выбранные вещи пользователя
-			selectedItem: null, // выбранная вещь на выбор
+			selectedUserItems: [],
+			selectedItem: null, 
 		}
 	},
 	components: {
