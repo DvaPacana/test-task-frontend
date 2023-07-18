@@ -7,8 +7,9 @@
     "dev": "vite --host --port 8080",
     "build": "vite build",
     "preview": "vite build && vite preview --host --port 8080",
-    "createtests": "npx cypress open"
-  },
+    "create-tests": "npx cypress open",
+    "run-tests": "cypress run"
+    },
   "dependencies": {
     "vue": "^3.3.4"
   },

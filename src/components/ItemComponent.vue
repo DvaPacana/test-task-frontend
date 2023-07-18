@@ -1,7 +1,7 @@
 <template>
   <div
     id="item"
-    data-cy="item"
+    :data-cy="`item-${item.id}`"
     class="item"
     :class="{ selected: item.selected }"
   >

@@ -33,6 +33,7 @@ const Item = defineAsyncComponent(() => import('@components/ItemComponent.vue'))
 .items-list {
   height: 100%;
   margin-top: $margin;
+
   &-wrapper {
     display: flex;
     flex-wrap: wrap;
