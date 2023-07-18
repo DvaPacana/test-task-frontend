@@ -1,0 +1,24 @@
+@import './global/index';
+
+:root {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    font-family: 'Montserrat';
+    line-height: var(--n-lh-regular);
+    color: var(--n-base);
+    background-color: var(--n-second-0);
+  }
+  ul, li {
+    list-style: none;
+    text-decoration: none;
+  }
+}

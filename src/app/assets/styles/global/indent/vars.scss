@@ -1,0 +1,11 @@
+:root {
+    --n-spacer: 16px;
+
+    // INDENT
+    --n-indent-0: 0;
+    --n-indent-1: calc(var(--n-spacer) * 0.25);
+    --n-indent-2: calc(var(--n-spacer) * 0.5);
+    --n-indent-3: calc(var(--n-spacer));
+    --n-indent-4: calc(var(--n-spacer) * 1.5);
+    --n-indent-5: calc(var(--n-spacer) * 3);
+}

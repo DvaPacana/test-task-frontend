@@ -1,0 +1,75 @@
+:root {
+
+    // DISPLAY FLEX
+    .f {
+        display: flex;
+    }
+
+    .fd-row {
+        flex-direction: row;
+    }
+
+    .fd-col {
+        flex-direction: column;
+    }
+
+    .fd-row-rev {
+        flex-direction: row-reverse;
+    }
+
+    .fd-col-rev {
+        flex-direction: column-reverse;
+    }
+
+    .fw-nowrap {
+        flex-wrap: nowrap;
+    }
+
+    .fw-wrap {
+        flex-wrap: wrap;
+    }
+
+    .ai-c {
+        align-items: center;
+    }
+
+    .ai-fs {
+        align-items: flex-start;
+    }
+
+    .ai-fe {
+        align-items: flex-end;
+    }
+
+    .ai-s {
+        align-items: stretch;
+    }
+
+    .ai-b {
+        align-items: baseline;
+    }
+
+    .jc-c {
+        justify-content: center;
+    }
+
+    .jc-fs {
+        justify-content: flex-start;
+    }
+
+    .jc-fe {
+        justify-content: flex-end;
+    }
+
+    .jc-sb {
+        justify-content: space-between;
+    }
+
+    .jc-sa {
+        justify-content: space-around;
+    }
+
+    .jc-se {
+        justify-content: space-evenly;
+    }
+}
