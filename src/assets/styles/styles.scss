@@ -1,0 +1,13 @@
+#test-app {
+    min-height: 100vh;
+}
+
+.padding {
+    padding: 1.5rem;
+  }
+
+.card {
+    padding: $padding;
+    border: $border;
+    min-height: 150px;
+}
