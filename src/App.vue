@@ -39,9 +39,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
-const selectedItem1 = ref([])
-const selectedItem2 = ref()
+import {Ref, ref} from "vue";
+interface ISelectedItem {
+  id: number,
+  name: string
+}
+const selectedItem1 = ref(new Array<ISelectedItem>())
+const selectedItem2: Ref<ISelectedItem> = ref({});
 
 const items1 = ref([
   {
