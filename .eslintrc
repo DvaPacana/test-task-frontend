@@ -1,0 +1,48 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "globals": {
+    "NodeJS": true
+  },
+  "plugins": ["prettier"],
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "eslint:recommended",
+    "@vue/typescript/recommended",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "rules": {
+    "no-undef": "off",
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "disallowTypeAnnotations": false
+      }
+    ],
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-expect-error": "allow-with-description",
+        "ts-ignore": true
+      }
+    ],
+    "@typescript-eslint/prefer-ts-expect-error": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ]
+  }
+}

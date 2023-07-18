@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "~/*": ["src/*"],
+        "@components/*": ["src/components/*"],
+        "@interfaces/*": ["src/interfaces/*"],
+      },
+      "target": "ESNext",
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "strict": true,
+      "skipLibCheck": true,
+    },
+    "include": [
+      "src",
+      "**/*.ts",
+      "**/*.vue"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }
