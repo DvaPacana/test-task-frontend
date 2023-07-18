@@ -1,9 +1,7 @@
 **Сборка и запуск:**
-Сборка и запуск: 
-
     yarn preview
 
-Тестирование cypress: 
+**Тестирование cypress:**
 
     yarn dev
     yarn run-tests
