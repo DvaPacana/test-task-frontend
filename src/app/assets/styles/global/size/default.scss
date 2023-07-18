@@ -1,0 +1,25 @@
+:root {
+  .w-100 {
+    width: 100%;
+  }
+  .h-100 {
+    height: 100%;
+  }
+
+  --n-ctrl-bc: var(--n-second-50);
+  --n-ctrl-bw: 1px;
+  --n-ctrl-br: 0.5rem;
+  --n-ctrl-is: 1.5rem;
+
+  --n-ctrl-small-px: 0.5rem;
+  --n-ctrl-small-py: 0.25rem;
+  --n-ctrl-small-sz: 2rem;
+
+  --n-ctrl-default-px: 1rem;
+  --n-ctrl-default-py: 0.5rem;
+  --n-ctrl-default-sz: 2.5rem;
+
+  --n-ctrl-large-px: 1rem;
+  --n-ctrl-large-py: 0.75rem;
+  --n-ctrl-large-sz: 3rem;
+}

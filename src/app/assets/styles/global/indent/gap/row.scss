@@ -1,0 +1,21 @@
+:root {
+    // ROW GAP
+    .rg-0 {
+        row-gap: var(--n-indent-0);
+    }
+    .rg-1 {
+        row-gap: var(--n-indent-1);
+    }
+    .rg-2 {
+        row-gap: var(--n-indent-2);
+    }
+    .rg-3 {
+        row-gap: var(--n-indent-3);
+    }
+    .rg-4 {
+        row-gap: var(--n-indent-4);
+    }
+    .rg-5 {
+        row-gap: var(--n-indent-5);
+    }
+}
