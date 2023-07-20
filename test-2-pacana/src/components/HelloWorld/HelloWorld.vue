@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const props = defineProps<{
-	labelText: string
+	name: string
 }>()
 const emits = defineEmits<{
 	(event: 'click'): void
@@ -14,7 +14,7 @@ const onClick = () => {
 <template>
 	<div class="select">
 		<label @click="onClick">
-			{{ props.labelText }}
+			{{ props.name }}
 		</label>
 	</div>
 </template>

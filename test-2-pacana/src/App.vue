@@ -1,68 +1,60 @@
 <template>
 	<div class="header">
-		<div v-if="selectedLeft.length">
-			<div class="header__left">
+		<template
+			v-for="headerOption in headerOptions">
+			<div
+				v-if="
+					headerOption.lengthOption
+				">
 				<div
-					class="item"
-					v-for="selected in selectedLeft"
-					:key="selected.id">
-					{{ selected.name }}
+					:class="headerOption.class">
+					<div
+						class="item"
+						v-for="selected in headerOption.selectedOptions"
+						:key="selected.id">
+						{{ selected.name }}
+					</div>
+				</div>
+				<div
+					v-if="
+						headerOption.index === 1
+					"
+					>Selected
+					{{
+						headerOption.lengthOption
+					}}
+					/ 6</div
+				>
+			</div>
+			<div v-else>
+				<div class="header__empty">
+					<div class="empty"></div>
+					<div
+						v-if="
+							headerOption.index === 1
+						">
+						Selected 0 / 6</div
+					>
 				</div>
 			</div>
-			<div
-				>Selected
-				{{ selectedLeft.length }} /
-				6</div
-			>
-		</div>
-		<div v-else>
-			<div class="header__empty">
-				<div class="empty"></div>
-				<div> Selected 0 / 6</div>
-			</div>
-		</div>
-
-		<div
-			class="header__right"
-			v-if="selectedRight.length">
-			<div
-				v-for="selected in selectedRight"
-				:key="selected.id">
-				{{ selected.name }}</div
-			>
-		</div>
-		<div
-			v-else
-			class="empty">
-		</div>
+		</template>
 	</div>
 	<div class="footer">
-		<div class="footer__left">
+		<div
+			v-for="bottomOption in bottomOptions"
+			:key="bottomOption.index"
+			:class="bottomOption.class">
 			<HelloWorld
-				v-for="checkbox in selectLeftOptions"
+				v-for="checkbox in bottomOption.checkboxOptions"
 				:key="checkbox.id"
 				@click="
 					onClick(
 						checkbox,
-						selectedLeft,
-						5
+						bottomOption.selectedOptions,
+						bottomOption.lengthOption
 					)
 				"
-				:label-text="checkbox.name"
-				:id="checkbox.id" />
-		</div>
-		<div class="footer__left">
-			<HelloWorld
-				v-for="checkbox in selectRightOptions"
-				:key="checkbox.id"
-				@click="
-					onClick(
-						checkbox,
-						selectedRight,
-						0
-					)
-				"
-				:label-text="checkbox.name"
+				:name="checkbox.name"
 				:id="checkbox.id" />
 		</div>
 	</div>
@@ -71,7 +63,7 @@
 <script setup lang="ts">
 import { I_HelloWorld } from './components/HelloWorld/models/interfaces'
 import HelloWorld from './components/HelloWorld/HelloWorld.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 const selectedLeft = ref<
 	I_HelloWorld[]
 >([])
@@ -101,22 +93,18 @@ const selectLeftOptions = ref([
 	{
 		id: 1,
 		name: 'Shoes 1',
-		value: false,
 	},
 	{
 		id: 2,
 		name: 'Shoes 2',
-		value: false,
 	},
 	{
 		id: 3,
 		name: 'Shoes 3',
-		value: false,
 	},
 	{
 		id: 4,
 		name: 'Shoes 4',
-		value: false,
 	},
 	{
 		id: 5,
@@ -125,61 +113,90 @@ const selectLeftOptions = ref([
 	{
 		id: 6,
 		name: 'T-shirt 2',
-		value: false,
 	},
 	{
 		id: 7,
 		name: 'T-shirt 3',
-		value: false,
 	},
 	{
 		id: 8,
 		name: 'T-shirt 4',
-		value: false,
 	},
 ])
 const selectRightOptions = ref([
 	{
 		id: 11,
 		name: 'Jacket 1',
-		value: false,
 	},
 	{
 		id: 12,
 		name: 'Jacket 2',
-		value: false,
 	},
 	{
 		id: 13,
 		name: 'Jacket 3',
-		value: false,
 	},
 	{
 		id: 14,
 		name: 'Jacket 4',
-		value: false,
 	},
 	{
 		id: 15,
 		name: 'Hoodie 1',
-		value: false,
 	},
 	{
 		id: 16,
 		name: 'Hoodie 2',
-		value: false,
 	},
 	{
 		id: 17,
 		name: 'Hoodie 3',
-		value: false,
 	},
 	{
 		id: 18,
 		name: 'Hoodie 4',
-		value: false,
 	},
 ])
+
+const bottomOptions = [
+	{
+		index: 1,
+		class: 'footer__left',
+		checkboxOptions:
+			selectLeftOptions.value,
+		selectedOptions: selectedLeft.value,
+		lengthOption: 5,
+	},
+	{
+		index: 2,
+		class: 'footer__left',
+		checkboxOptions:
+			selectRightOptions.value,
+		selectedOptions:
+			selectedRight.value,
+		lengthOption: 0,
+	},
+]
+
+const headerOptions = [
+	{
+		index: 1,
+		class: 'header__left',
+		selectedOptions: selectedLeft.value,
+		lengthOption: computed(
+			() => selectedLeft.value.length
+		),
+	},
+	{
+		index: 2,
+		class: 'header__right',
+		selectedOptions:
+			selectedRight.value,
+		lengthOption: computed(
+			() => selectedRight.value.length
+		),
+	},
+]
 </script>
 
 <style lang="scss" scoped>
