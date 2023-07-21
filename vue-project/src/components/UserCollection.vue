@@ -6,6 +6,7 @@ const usersItems = ref(items);
 const addedItems = ref([]);
 
 function addItem({ target: { id } }) {
+  if (addedItems.value.length > 5) return;
   const currentItem = usersItems.value.find((i) => i.id === +id);
   usersItems.value = usersItems.value.filter((i) => i.id !== +id);
   addedItems.value.push(currentItem);
@@ -26,10 +27,7 @@ function removeItem({ target: { id } }) {
           {{ item.name }}
         </li>
       </ul>
-      <span
-        >Selected:
-        {{ Math.round((addedItems.length / items.length) * 100) }}%</span
-      >
+      <span>Selected: {{ addedItems.length + "/" + 6 }}</span>
     </div>
 
     <ul class="not-selected">

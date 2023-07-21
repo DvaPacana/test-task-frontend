@@ -14,7 +14,6 @@ function addItem({ target: { id } }) {
 
 function removeItem({ target: { id } }) {
   shopItems.value.push(addedItem.value);
-  shopItems.value.push(addedItem.value);
   addedItem.value = null;
 }
 </script>
