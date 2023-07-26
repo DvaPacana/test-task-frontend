@@ -19,8 +19,8 @@
 
 <template lang="pug">
   .main
-    List(:items="leftList")
-    List(:items="rightList" :isSingleChoice="true")
+    List(:items="leftList" :maxSelectCount="6")
+    List(:items="rightList" :maxSelectCount="1")
 </template>
 
 <style scoped lang="scss">

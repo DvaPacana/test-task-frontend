@@ -9,49 +9,48 @@
     data() {
       return {
         itemList: [],
-        selectedList: []
+        selectedCounter: 0,
+        lastSelectedId: null
       }
     },
     props: {
       items: Array,
-      isSingleChoice: {
-        type: Boolean,
-        default: false
-      }
+      maxSelectCount: Number
     },
     computed: {
       selectedItems() {
-        return this.itemList.filter(el => this.selectedList.includes(el.id));
+        return this.itemList.filter(el => el.selected);
       }
     },
     mounted() {
       this.itemList = this.items.map(el => {
-        return {...el, selectedList: false};
+        return {...el, selected: false};
       });
     },
     methods: {
       itemSelect(id) {
-        if (this.selectedList.includes(id)) {
+        const selectedElement = this.itemList.find(el => el.id === id);
+
+        if(selectedElement.selected) {
           this.toggleSelectedMark(id);
-          const removedIndex = this.selectedList.findIndex(el => el === id);
-          if (removedIndex < 0) return;
-          this.selectedList.splice(removedIndex, 1);
           return;
         }
 
-        if (this.selectedList.length >= 6) return;
+        if(this.maxSelectCount === 1) {
+          const lastSelectedInd = this.itemList.findIndex(el => el.selected);
+          if (lastSelectedInd !== -1) {
+            this.toggleSelectedMark(this.itemList[lastSelectedInd].id);
+          }
+        }
+
+        if(this.selectedCounter >= this.maxSelectCount) return;
 
         this.toggleSelectedMark(id, true);
-        if (this.isSingleChoice) {
-          this.selectedList.forEach(elId => this.toggleSelectedMark(elId));
-          this.selectedList = [id];
-          return;
-        }
-        this.selectedList.push(id);
       },
       toggleSelectedMark(id, isSelected = false) {
         const selectedIndex = this.itemList.findIndex(el => el.id === id);
         this.itemList[selectedIndex].selected = isSelected;
+        !isSelected ? this.selectedCounter-- : this.selectedCounter++;
       }
     }
   }
