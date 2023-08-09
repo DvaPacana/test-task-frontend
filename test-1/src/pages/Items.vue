@@ -5,7 +5,10 @@
             <v-col cols="6">
                 <v-sheet width="50%" border>
                         <v-sheet min-height="10vh">
-                            <ListView :data="topLeft" :border="false"/>
+                            <ListView 
+                                :data="topLeft" 
+                                :border="false"
+                                />
                         </v-sheet>
                         <v-sheet class="ma-2">
                             selected: {{topLeft.length}} / 6
@@ -13,22 +16,24 @@
                 </v-sheet>
             </v-col>
             <v-col cols="6" class="d-flex justify-end">
-                <v-sheet width="50%" border>
+                <v-sheet width="50%" border class="d-flex justify-center align-center">
                     <h3>{{topRight.name}}</h3>
                 </v-sheet>
             </v-col>
         </v-row>
 
-        <v-row>
-            <v-col cols="6">
+        <v-row >
+            <v-col cols="6" >
                 <ListView 
                     :data="leftBlocks"
+                    minHeight="70vh"
                     @clicked="leftClick"
                     />
             </v-col>
             <v-col cols="6">
                 <ListView 
                     :data="rightBlocks" 
+                    minHeight="70vh"
                     @clicked="rightClick"
                     />
             </v-col>

@@ -1,18 +1,20 @@
 <template>
     <v-sheet 
-        class="d-flex flex-wrap flex-row" 
+        class="d-flex flex-wrap flex-start align-content-start" 
         rounded
         :border=border
+        :min-height=minHeight
         >
+
             <v-btn 
                 v-for="itm in data" 
-                class="ma-2"
+                class="ma-2 "
                 :key="itm.id" 
                 :text="itm.name" 
-                :color="itm.id === selected ? 'red' : ''"
-                @click="$emit('clicked', {...itm})"
+                @click="$emit('clicked', itm)"
                 >
             </v-btn>
+
     </v-sheet>
 </template>
   
@@ -25,8 +27,8 @@ export default defineComponent({
     name: "ListView",
     props: {
         data: {} as PropType<Item[]>,
-        selected: VueTypes.number.isRequired,
-        border: VueTypes.bool.def(true)
+        border: VueTypes.bool.def(true),
+        minHeight: VueTypes.string.def(""),
     }
 
 });
