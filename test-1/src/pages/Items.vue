@@ -55,9 +55,7 @@ export default defineComponent({
     data() {
         const appStore = useAppStore()
         return { 
-            appStore,
-            topLeft: [] as Item[], 
-            topRight: {} as Item, 
+            appStore
         };
     },
     computed:{
