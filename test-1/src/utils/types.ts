@@ -5,5 +5,7 @@ export interface Item {
 
 export interface AppState {
     leftBlock: Item[],
-    rightBlock: Item[]
+    rightBlock: Item[],
+    selectedLeft: Item[], 
+    selectedRight: Item, 
 }

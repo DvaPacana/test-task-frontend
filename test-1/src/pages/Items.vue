@@ -6,18 +6,19 @@
                 <v-sheet width="50%" border>
                         <v-sheet min-height="10vh">
                             <ListView 
-                                :data="topLeft" 
+                                :data="selectedLeft" 
                                 :border="false"
+                                @clicked="removeSelectedItem"
                                 />
                         </v-sheet>
                         <v-sheet class="ma-2">
-                            selected: {{topLeft.length}} / 6
+                            selected: {{selectedLeft.length}} / 6
                         </v-sheet>
                 </v-sheet>
             </v-col>
             <v-col cols="6" class="d-flex justify-end">
                 <v-sheet width="50%" border class="d-flex justify-center align-center">
-                    <h3>{{topRight.name}}</h3>
+                    <h3>{{selectedRight.name}}</h3>
                 </v-sheet>
             </v-col>
         </v-row>
@@ -27,14 +28,14 @@
                 <ListView 
                     :data="leftBlocks"
                     minHeight="70vh"
-                    @clicked="leftClick"
+                    @clicked="addLeftItem"
                     />
             </v-col>
             <v-col cols="6">
                 <ListView 
                     :data="rightBlocks" 
                     minHeight="70vh"
-                    @clicked="rightClick"
+                    @clicked="addRightItem"
                     />
             </v-col>
         </v-row>
@@ -60,33 +61,25 @@ export default defineComponent({
         };
     },
     computed:{
-        leftBlocks(){
-            return this.appStore.getLeftBlock
-        },
-        rightBlocks(){
-            return this.appStore.getRightBlock
-        }
+        leftBlocks(){ return this.appStore.getLeftBlock },
+        rightBlocks(){ return this.appStore.getRightBlock },
+        selectedLeft(){ return this.appStore.getSelectedLeft },
+        selectedRight(){ return this.appStore.getSelectedRight }
     },
     methods:{
-        leftClick(val: Item) {
-            const findItem = this.topLeft.find((e)=> e.id == val.id)
-            if(!findItem){
-                if(this.topLeft.length <= 5){
-                    this.topLeft.unshift(val)
-                } else {
-                    this.topLeft.pop()
-                    this.topLeft.unshift(val)
-                }
-            }
+        addLeftItem(val: Item) {
+            this.appStore.addToSelectedLeft(val)
         },
-        rightClick(val: Item) {
-            this.topRight = val
+        removeSelectedItem(val: Item) {
+            this.appStore.removeFromSelectedLeft(val)
+        },
+        addRightItem(val: Item) {
+            this.appStore.rightClick(val)
         }
     },
     mounted(){
-        this.appStore.setBlocks()
+        this.appStore.initBlocks()
     }
-
-    });
+});
 </script>
   
