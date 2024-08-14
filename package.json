@@ -1,0 +1,29 @@
+{
+  "name": "test-task-frontend",
+  "version": "1.0.0",
+  "description": "<!-- title: Тестовое задание -->\r <p>\r     <h1 align=\"center\">Тестовое задание VueJS</h1>\r     <br>\r </p>",
+  
+  "main": "index.js",
+  
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vite build && gh-pages --dotfiles -d dist"
+  },
+
+  "author": "",
+  "license": "ISC",
+
+  "dependencies": {
+    "vue": "^3.4.29"
+  },
+
+  "devDependencies": {
+    "vite": "^5.3.1",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "vite-plugin-pug": "^0.3.2",
+    "sass": "^1.77.6",
+    "gh-pages": "^6.1.1"
+  }
+}
