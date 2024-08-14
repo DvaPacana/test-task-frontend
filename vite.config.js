@@ -6,4 +6,6 @@ import pugPlugin from "vite-plugin-pug"
 
 export default defineConfig({
   plugins: [vue(), pugPlugin()],
+
+  base: '/test-task-frontend/',
 })
