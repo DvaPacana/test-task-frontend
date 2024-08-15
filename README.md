@@ -1,5 +1,3 @@
-### tg @slouvv
-
 ## Project setup
 ```
 npm install
