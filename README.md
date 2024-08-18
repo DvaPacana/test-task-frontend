@@ -1,3 +1,39 @@
+# Обновлено 18 августа 2024
+Сделал вариант на Nuxt3, Vue3, Ts, Options API 
+Плюс обновил логику вместо массива использовал new Set()
+
+### See ([Ссылка на репозиторий](https://github.com/RiceKing/Nuxt3Vue3TsCompositionAPI))
+
+### Страница
+   -- pages/dvapacana.vue
+### Компоненты
+   --  @/components/sections/dvaPacana/*
+
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
 <!-- title: Тестовое задание -->
 <p>
     <h1 align="center">Тестовое задание VueJS</h1>
