@@ -1,3 +1,14 @@
+## Обновлено 18 августа 2024
+Сделал вариант на Nuxt3, Vue3, Ts, Options API 
+Плюс обновил логику вместо массива использовал new Set()
+See ([Ссылка на репозиторий](https://github.com/RiceKing/Nuxt3Vue3TsCompositionAPI))
+
+# Страница
+   -- pages/dvapacana.vue
+# Компоненты
+   --  @/components/sections/dvaPacana/*
+
+
 ## Project setup
 ```
 npm install
