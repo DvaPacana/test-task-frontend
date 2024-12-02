@@ -1,0 +1,9 @@
+{
+  "InventoryPage": {
+    "ItemListUserTitle": "Вещи пользователя",
+    "ItemListForSelectTitle": "Вещи на выбор",
+    "SelectedUserItemTitle": "Выбранные вещи из вещей пользователя:",
+    "SelectedItemTitle": "Выбранная вещь из вещей на выбор:",
+    "SelectedText": "Выбрано: "
+  }
+}

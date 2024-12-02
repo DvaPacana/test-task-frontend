@@ -1,0 +1,9 @@
+:root {
+  /* Основные цвета темы */
+  --color-background: #f4f4f4;
+  --color-border: #ddd;
+  --color-text-main: #333;
+  --color-hover: #f0f0f0;
+  --color-selected: #d1e7dd;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+}
