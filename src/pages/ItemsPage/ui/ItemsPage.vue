@@ -2,10 +2,11 @@
 import { ItemsList } from '@/widgets'
 
 import { leftItems, rightItems } from '../const/mockData'
-import { useSingleSelectedItemModel, useMultiSelectedItemModel } from '@/entities/Item'
+import { useSingleSelectedItemModel } from '@/features/selectedItem'
+import { useMultiSelectedItemsModel } from '@/features/multiSelectedItems'
 
 const singleSelectedItemModel = useSingleSelectedItemModel()
-const multiSelectedItemModel = useMultiSelectedItemModel()
+const multiSelectedItemModel = useMultiSelectedItemsModel()
 
 const handleClickLeftItems = (id: string) => {
   multiSelectedItemModel.add(id)

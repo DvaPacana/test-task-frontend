@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 const MAX_ITEMS = 6
 
-export const useMultiSelectedItemModel = defineStore({
+export const useMultiSelectedItemsModel = defineStore({
   id: 'multiSelected',
   state: (): { ids: string[] } => ({
     ids: [],
