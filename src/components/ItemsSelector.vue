@@ -17,7 +17,7 @@ defineProps({
   },
   multiple: {
     type: Boolean,
-  }
+  },
 })
 
 defineEmits(['deleteItem', 'selectItem'])
