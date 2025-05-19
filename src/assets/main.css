@@ -1,0 +1,27 @@
+@import './base.css';
+
+#app {
+  display: grid;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+  gap: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+
+  #app {
+    grid-template-columns: 1fr 1fr;
+  }
+}
