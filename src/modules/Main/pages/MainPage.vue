@@ -27,6 +27,7 @@ import ChooseDashboard from '../ui/ChooseDashoboard.vue'
 import { ref, watch } from 'vue'
 import LoaderWrapper from '@/shared/ui/LoaderWrapper.vue'
 import type { Item } from '../api/types'
+import { useCreateSelectionHandler } from '../lib/useCreateSelectionHandler'
 
 const selectedUserStore = ref<Item[]>([])
 const selectedUnUserStore = ref<Item[]>([])
@@ -38,38 +39,21 @@ const { data: stores, isLoading } = useQuery({
   queryFn: getStore,
 })
 
+const { add: onSelectUserStore, remove: onRemoveUserStore } = useCreateSelectionHandler(
+  userStore,
+  selectedUserStore,
+  6,
+)
+const { add: onSelectUnUserStore, remove: onRemoveUnUserStore } = useCreateSelectionHandler(
+  unUserStore,
+  selectedUnUserStore,
+  1,
+)
+
 watch(stores, (data) => {
   userStore.value = data?.left || []
   unUserStore.value = data?.right || []
 })
-
-const onSelectUserStore = (item: Item) => {
-  const currentItem = userStore.value.find((i) => i.id === item.id)
-  if (!currentItem || selectedUserStore.value.length === 6) return
-  selectedUserStore.value = [...selectedUserStore.value, currentItem]
-  userStore.value = userStore.value.filter((i) => i.id !== item.id)
-}
-
-const onRemoveUserStore = (item: Item) => {
-  const currentItem = selectedUserStore.value.find((i) => i.id === item.id)
-  if (!currentItem) return
-  userStore.value = [...userStore.value, currentItem]
-  selectedUserStore.value = selectedUserStore.value.filter((i) => i.id !== item.id)
-}
-
-const onSelectUnUserStore = (item: Item) => {
-  const currentItem = unUserStore.value.find((i) => i.id === item.id)
-  if (!currentItem || selectedUnUserStore.value.length === 1) return
-  selectedUnUserStore.value = [...selectedUnUserStore.value, currentItem]
-  unUserStore.value = unUserStore.value.filter((i) => i.id !== item.id)
-}
-
-const onRemoveUnUserStore = (item: Item) => {
-  const currentItem = selectedUnUserStore.value.find((i) => i.id === item.id)
-  if (!currentItem) return
-  unUserStore.value = [...unUserStore.value, currentItem]
-  selectedUnUserStore.value = selectedUnUserStore.value.filter((i) => i.id !== item.id)
-}
 </script>
 
 <style scoped></style>
