@@ -1,4 +1,6 @@
-export const getStore = () => {
+import type { Item } from './types'
+
+export const getStore = (): Promise<{ left: Item[]; right: Item[] }> => {
   return new Promise((resolve) => {
     const left = [
       {
