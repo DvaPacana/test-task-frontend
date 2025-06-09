@@ -4,7 +4,8 @@
       <div
         v-for="item in data"
         :key="item.id"
-        class="w-28 h-20 flex items-center justify-center bg-white border-4 border-black rounded-xl shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-2xl animate-fade-in"
+        class="w-28 h-20 flex items-center justify-center bg-white border-4 border-black rounded-xl shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-2xl animate-fade-in cursor-pointer"
+        @click="onHandleSelect(item)"
       >
         <span class="text-lg font-medium">{{ item.name }}</span>
       </div>
@@ -14,6 +15,14 @@
 
 <script setup lang="ts">
 import type { Item } from '../api/types'
+
+const $emit = defineEmits<{
+  (e: 'select', item: Item): void
+}>()
+
+const onHandleSelect = (item: Item) => {
+  $emit('select', item)
+}
 
 const { data } = defineProps<{
   data: Item[]
