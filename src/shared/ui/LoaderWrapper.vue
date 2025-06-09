@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full w-full max-h-full min-h-screen flex flex-col">
     <Loader v-if="isLoading" />
     <slot v-else />
   </div>
