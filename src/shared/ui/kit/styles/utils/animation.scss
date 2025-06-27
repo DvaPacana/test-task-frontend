@@ -1,0 +1,27 @@
+@use 'sass:list';
+
+@mixin animation() {
+	transition:
+		width var(--animation-time) var(--animation-method),
+		max-width var(--animation-time) var(--animation-method),
+		height var(--animation-time) var(--animation-method),
+		max-height var(--animation-time) var(--animation-method),
+		color var(--animation-time) var(--animation-method),
+		border var(--animation-time) var(--animation-method),
+		box-shadow var(--animation-time) var(--animation-method),
+		background var(--animation-time) var(--animation-method),
+		margin var(--animation-time) var(--animation-method),
+		padding var(--animation-time) var(--animation-method),
+		transform var(--animation-time) var(--animation-method),
+		opacity var(--animation-time) var(--animation-method),
+		left var(--animation-time) var(--animation-method),
+		top var(--animation-time) var(--animation-method),
+		bottom var(--animation-time) var(--animation-method),
+		right var(--animation-time) var(--animation-method),
+		z-index var(--animation-time) var(--animation-method),
+		inset var(--animation-time) var(--animation-method),
+		font-size var(--animation-time) var(--animation-method),
+		fill var(--animation-time) var(--animation-method);
+
+	// transition: all 1200ms linear;
+}

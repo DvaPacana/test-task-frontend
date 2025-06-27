@@ -1,0 +1,25 @@
+@use '@styles/utils';
+
+html {
+	@include utils.scroll-style();
+	@include utils.font();
+	background: var(--color-bg);
+	color: var(--color-text-200);
+}
+
+.container {
+	margin: auto;
+	max-width: 1400px;
+	padding: 0 0.75rem;
+}
+
+// transition animate
+.list-enter-active,
+.list-leave-active {
+	transition: all var(--animation-time) var(--animation-method);
+}
+.list-enter-from,
+.list-leave-to {
+	opacity: 0;
+	transform: translateX(50px);
+}

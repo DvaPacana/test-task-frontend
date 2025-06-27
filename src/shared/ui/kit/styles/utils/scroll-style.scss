@@ -1,0 +1,25 @@
+$scroll_border_radius: 0px;
+$scroll_border_width: 1px;
+
+@mixin scroll-style {
+	::-webkit-scrollbar {
+		width: calc(0.25rem + 2 * $scroll_border_width);
+	}
+
+	// btn-s
+	::-webkit-scrollbar-button {
+		display: none;
+	}
+
+	// пустое пространство под индикатором прокрутки
+	::-webkit-scrollbar-track {
+		background: var(--color-bg);
+	}
+
+	// индикатор прокрутки
+	::-webkit-scrollbar-thumb {
+		background: var(--color-primary);
+		border-radius: 0;
+		border: solid $scroll_border_width var(--color-bg);
+	}
+}
