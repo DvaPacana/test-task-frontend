@@ -1,0 +1,21 @@
+{
+	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+	"compilerOptions": {
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+		"lib": ["dom", "es2020"],
+		"strict": true,
+		"composite": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedSideEffectImports": true,
+		"baseUrl": ".",
+		"target": "es2022",
+		"module": "Node16",
+
+		"paths": {
+			"@/*": ["./src/*"],
+			"@styles/*": ["./src/shared/ui/kit/styles/*"]
+		}
+	}
+}

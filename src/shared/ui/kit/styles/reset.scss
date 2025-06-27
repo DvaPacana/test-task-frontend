@@ -1,0 +1,84 @@
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(#app) {
+  min-height: 100vh;
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  table {
+    caption-side: bottom;
+    border-collapse: collapse;
+  }
+
+  input,
+  button,
+  *:focus-visible {
+    background: none;
+    outline: none;
+    border: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(ul[class]) {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

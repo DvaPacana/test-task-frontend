@@ -1,0 +1,43 @@
+@use 'sass:map';
+@use 'sass:list';
+
+$font-types: (
+	'base': (
+		'family': 'nissan-light',
+		'size': 1rem,
+		'weight': 400,
+		'height': 1.5rem,
+		'transform': inherit,
+	),
+	'mark': (
+		'family': 'nissan-bold',
+		'size': 0.85rem,
+		'weight': 400,
+		'height': 1.15rem,
+		'transform': uppercase,
+	),
+	'xs': (
+		'family': 'nissan-regular',
+		'size': 0.75rem,
+		'weight': 400,
+		'height': 1.15rem,
+		'transform': lowercase,
+	),
+	'xl': (
+		'family': 'nissan-regular',
+		'size': 1.5rem,
+		'weight': 300,
+		'height': 2.5rem,
+		'transform': uppercase,
+	),
+);
+
+@mixin font($font-key: 'base') {
+	$font-type: map.get($font-types, $font-key);
+
+	font-family: map.get($font-type, family);
+	font-size: map.get($font-type, size);
+	font-weight: map.get($font-type, weight);
+	line-height: map.get($font-type, height);
+	text-transform: map.get($font-type, transform);
+}
