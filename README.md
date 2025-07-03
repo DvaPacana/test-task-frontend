@@ -1,115 +1,75 @@
-<!-- title: Тестовое задание -->
-<p>
-    <h1 align="center">Тестовое задание VueJS</h1>
-    <br>
-</p>
+# Nuxt Minimal Starter
 
-> После пуша Vue в ваш репозиторий, сделайте задание в любой другой ветке и PR в основную.  
-> Подойдет как Vue2, так и Vue3
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-</br>
+## Setup
 
+Make sure to install dependencies:
 
-![IMAGE](image.png "Image")
+```bash
+# npm
+npm install
 
-Задача: сделать рабочую страницу с изображения.
+# pnpm
+pnpm install
 
-Дизайн не требуется. Достаточно схематичной страницы, как на изображении.
+# yarn
+yarn install
 
-#### Блоки снизу:  
-Слева - вещи у пользователя  
-Справа - вещи на выбор
-
-#### Блоки сверху:  
-Слева - выбранные вещи из вещей пользователя (блок снизу-слева)  
-Справа - выбранная вещь из вещей на выбор (блок снизу-справа).
-
-Объекты вещей имеют одинаковую структуру, отличаются только названием и номером.
-
----
-
-## Механика работы
-
-Снизу-справа можно выбрать одновременно `только 1 вещь`, которая должна отображаться справа-сверху.
-
-Снизу-слева можно выбрать `от 1 до 6 вещей`, которые должны отображаться в верхней левой части в порядке выбора.
-
----
-
-Коллекции для заполнения нижних блоков слева и справа:
-
-### Блок слева
-```
-[
-    {
-        "id": 1,
-        "name": "Shoes 1"
-    },
-    {
-        "id": 2,
-        "name": "Shoes 2"
-    },
-    {
-        "id": 3,
-        "name": "Shoes 3"
-    },
-    {
-        "id": 4,
-        "name": "Shoes 4"
-    },
-    {
-        "id": 5,
-        "name": "T-shirt 1"
-    },
-    {
-        "id": 6,
-        "name": "T-shirt 2"
-    },
-    {
-        "id": 7,
-        "name": "T-shirt 3"
-    },
-    {
-        "id": 8,
-        "name": "T-shirt 4"
-    }
-]
+# bun
+bun install
 ```
 
-### Блок справа
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
-[
-    {
-        "id": 11,
-        "name": "Jacket 1"
-    },
-    {
-        "id": 12,
-        "name": "Jacket 2"
-    },
-    {
-        "id": 13,
-        "name": "Jacket 3"
-    },
-    {
-        "id": 14,
-        "name": "Jacket 4"
-    },
-    {
-        "id": 15,
-        "name": "Hoodie 1"
-    },
-    {
-        "id": 16,
-        "name": "Hoodie 2"
-    },
-    {
-        "id": 17,
-        "name": "Hoodie 3"
-    },
-    {
-        "id": 18,
-        "name": "Hoodie 4"
-    }
-]
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
 ```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
