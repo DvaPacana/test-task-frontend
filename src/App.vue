@@ -1,47 +1,87 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script setup lang="ts">
+import ProductColumn from '@/components/ProductColumn.vue'
+import SelectedProducts from '@/components/SelectedProducts.vue'
+import { useProductsStore } from '@/stores/products.store.ts'
+import { onMounted } from 'vue'
+import { useUserStore } from '@/stores/user.store.ts'
+import ProductItem from '@/components/ProductItem.vue'
+
+const productsStore = useProductsStore()
+const userStore = useUserStore()
+
+onMounted(() => {
+  productsStore.fetchProducts()
+  userStore.fetchProducts()
+})
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="app">
+    <header class="app__header">
+      <SelectedProducts>
+        <ProductItem
+          v-for="{ id, name } in userStore.selectedProducts"
+          :name
+          :key="id"
+          @click="() => userStore.removeProduct(id)"
+        />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+        <template #footer>
+          <p>
+            selected:
+            {{ userStore.selectedProducts.length }}
+            / 6
+          </p>
+        </template>
+      </SelectedProducts>
+      <SelectedProducts>
+        <ProductItem v-if="productsStore.activeProduct" :name="productsStore.activeProduct.name" />
+        <p v-else>SELECT ITEM</p>
+      </SelectedProducts>
+    </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <main class="app__main">
+      <ProductColumn>
+        <ProductItem
+          v-for="{ id, name } in userStore.leftProducts"
+          :name
+          :key="id"
+          @click="() => userStore.selectProduct(id)"
+        />
+      </ProductColumn>
+      <ProductColumn>
+        <ProductItem
+          v-for="{ id, name } in productsStore.products"
+          :name
+          :key="id"
+          :style="{ borderColor: productsStore.activeProduct?.id === id ? 'red' : '' }"
+          @click="() => productsStore.setActiveProduct(id)"
+        />
+      </ProductColumn>
+    </main>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 100%;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.app__header,
+.app__main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.app__header {
+  min-height: 252px;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.app__main {
+  flex-grow: 1;
 }
 </style>
