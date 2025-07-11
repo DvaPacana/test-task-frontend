@@ -1,0 +1,36 @@
+import type { IItem } from '@/components/types/Item.ts'
+
+export const leftItems: IItem[] = [
+  {
+    'id': 1,
+    'name': 'Shoes 1'
+  },
+  {
+    'id': 2,
+    'name': 'Shoes 2'
+  },
+  {
+    'id': 3,
+    'name': 'Shoes 3'
+  },
+  {
+    'id': 4,
+    'name': 'Shoes 4'
+  },
+  {
+    'id': 5,
+    'name': 'T-shirt 1'
+  },
+  {
+    'id': 6,
+    'name': 'T-shirt 2'
+  },
+  {
+    'id': 7,
+    'name': 'T-shirt 3'
+  },
+  {
+    'id': 8,
+    'name': 'T-shirt 4'
+  }
+]
