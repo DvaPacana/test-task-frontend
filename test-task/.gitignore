@@ -1,0 +1,15 @@
+logs
+*.log
+npm-debug.log*
+
+node_modules
+dist
+dist-ssr
+coverage
+*.local
+
+
+.vscode/*
+!.vscode/extensions.json
+.idea
+
