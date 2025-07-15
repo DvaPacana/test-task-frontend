@@ -1,22 +1,22 @@
-import { ref } from 'vue'
 import type { IProduct } from '@/types/IProduct.ts'
+import { ref } from 'vue'
 
 export function useProducts(products: IProduct[]) {
-  const availableProducts = ref<IProduct[]>([...products])
-  const selectedProducts = ref<IProduct[]>([])
+  const availableProducts = ref<Set<IProduct>>(new Set(products))
+  const selectedProducts = ref<Set<IProduct>>(new Set())
 
   const select = (item: IProduct, maxSelectedItems: number = 1) => {
-    if (selectedProducts.value.length >= maxSelectedItems) {
+    if (selectedProducts.value.size >= maxSelectedItems) {
       alert('Нельзя выбрать больше')
       return
     }
-    availableProducts.value = availableProducts.value.filter((product) => product.id !== item.id)
-    selectedProducts.value = [...selectedProducts.value, item]
+    availableProducts.value.delete(item)
+    selectedProducts.value.add(item)
   }
 
   const remove = (item: IProduct) => {
-    selectedProducts.value = selectedProducts.value.filter((product) => product.id !== item.id)
-    availableProducts.value = [...availableProducts.value, item]
+    selectedProducts.value.delete(item)
+    availableProducts.value.add(item)
   }
 
   return {

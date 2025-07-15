@@ -16,10 +16,7 @@ const { availableProducts, selectedProducts, select, remove } = useProducts(choi
           :product="product"
           @click="remove(product)"
         />
-        <p
-          v-if="selectedProducts.length === 0"
-          class="justify-center self-center text-center text-4xl"
-        >
+        <p v-if="!selectedProducts.size" class="justify-center self-center text-center text-4xl">
           SELECTED ITEM
         </p>
       </div>

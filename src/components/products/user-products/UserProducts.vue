@@ -19,7 +19,7 @@ const { availableProducts, selectedProducts, select, remove } = useProducts(user
         />
       </div>
       <p class="self-end text-center">
-        selected: {{ selectedProducts.length }}/{{ MAX_SELECTED_ITEMS }}
+        selected: {{ selectedProducts.size }}/{{ MAX_SELECTED_ITEMS }}
       </p>
     </section>
     <section class="flex flex-wrap content-start gap-4 border-4 p-4">
