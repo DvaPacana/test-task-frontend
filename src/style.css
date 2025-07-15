@@ -13,6 +13,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.panel-tl,
+.panel-tr,
+.panel-bl,
+.panel-br {
+  border: 3px solid #000;
+  padding: 8px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
