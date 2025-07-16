@@ -1,0 +1,35 @@
+name: Сборка и деплой
+
+on:
+  push:
+    branches: [feature/wardrobe-task]
+  pull_request:
+    branches: [feature/wardrobe-task]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Настройка Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'yarn'
+
+      - name: Установка зависимостей
+        run: yarn install
+
+      - name: Сборка проекта
+        run: yarn build
+
+      - name: Деплой на GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          clean: true
