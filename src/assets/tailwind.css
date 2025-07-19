@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source inline("dark:{flex,hidden} dark:border-gray-700/50 dark:border-gray-700");
+
+@theme {
+  --color-primary: #24c0eb;
+  --color-secondary: #66d3f1;
+  --color-bermuda: #78dcca;
+}
+
+@layer base {
+  html {
+    font-family: "Roboto", sans-serif;
+
+    @apply min-h-screen leading-[140%] text-base md:overflow-y-scroll;
+  }
+  body {
+    @apply min-h-screen min-w-[320px] text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-white;
+  }
+  input {
+    outline: none;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply leading-[140%];
+  }
+
+  h1 {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+  h2 {
+    @apply text-xl md:text-2xl font-bold;
+  }
+  h3 {
+    @apply text-lg md:text-xl font-bold;
+  }
+  h4 {
+    @apply text-base md:text-lg font-bold;
+  }
+  h5 {
+    @apply text-sm md:text-base font-bold;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 9999s ease-in-out 0s;
+  }
+  .dark {
+    input::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+  }
+  input {
+    background: transparent;
+  }
+}
