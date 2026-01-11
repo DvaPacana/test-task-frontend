@@ -1,0 +1,31 @@
+:root {
+  --color-white: rgba(255, 255, 255, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-primary: rgba(75, 105, 226, 1);
+  --color-primary-hover: rgba(62, 87, 204, 1);
+  --color-primary-dark: rgba(51, 71, 182, 1);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-bg: rgba(252, 252, 249, 1);
+  --color-surface: rgba(255, 255, 253, 1);
+  --color-text: var(--color-slate-900);
+
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  --radius-base: 8px;
+  --radius-lg: 12px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
