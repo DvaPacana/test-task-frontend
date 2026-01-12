@@ -1,0 +1,35 @@
+:root {
+  --color-main: var(--color-white);
+  --color-background: var(--color-black);
+  
+  font-family: var(--font-main);
+
+  color-scheme: light dark;
+  color: var(--color-main);
+  background-color: var(--color-background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-main: var(--color-black);
+    --color-background: var(--color-white);
+  }
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  overscroll-behavior: none;
+}
+
+#app {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding: 1.25rem;
+}

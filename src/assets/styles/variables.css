@@ -1,0 +1,15 @@
+:root {
+  --color-white: whitesmoke;
+  --color-black: #212121;
+  --color-purple: rgb(121, 4, 74);
+
+  --color-main: var(--color-white);
+  --color-background: var(--color-black);
+  --color-accent: var(--color-purple);
+
+  --font-main: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --container-max-width: 80rem;
+
+  --spacing: 1rem;
+}
