@@ -1,0 +1,19 @@
+.item-list__header {
+  font-weight: bold;
+  margin-bottom: 8px;
+  padding: 8px 0;
+}
+
+.item-list__header--single {
+  color: #4a90e2;
+}
+
+.item-list__header--multi {
+  color: #7ed321;
+}
+
+.item-list__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}

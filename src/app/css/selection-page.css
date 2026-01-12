@@ -1,0 +1,48 @@
+.selection-page {
+  padding: 24px;
+  font-family: Arial, sans-serif;
+}
+
+.selection-page__top,
+.selection-page__bottom {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.selection-page__top-left,
+.selection-page__top-right,
+.selection-page__bottom-left,
+.selection-page__bottom-right {
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 16px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.selection-page__selected-items,
+.selection-page__selected-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-height: 50px;
+}
+
+.selection-page__selected-item {
+  justify-content: center;
+  align-items: center;
+}
+
+.selection-page__counter {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+}
+
+.selection-page h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #333;
+}
