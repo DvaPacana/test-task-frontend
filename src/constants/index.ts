@@ -1,0 +1,1 @@
+export const USER_SELECTION_LIMIT = 6
