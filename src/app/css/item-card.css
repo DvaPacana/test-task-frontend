@@ -1,0 +1,24 @@
+.item-card {
+  padding: 5px 5px;
+  height: 35px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s, border-color 0.2s;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.item-card:hover {
+  background: #f0f0f0;
+}
+
+.item-card--selected {
+  background: #d0e8ff;
+  border-color: #4a90e2;
+  font-weight: bold;
+}
