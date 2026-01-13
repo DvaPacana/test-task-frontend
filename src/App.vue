@@ -9,12 +9,12 @@ const rightItems = ref<Item[]>(RIGHT_BLOCK_ITEMS);
 const selectedLeft = ref<Item[]>([]);
 const selectedRight = ref<Item | null>(null);
 
-function isLeftChosen(item: Item) {
+function isLeftselected(item: Item) {
   return selectedLeft.value.some((i) => i.id === item.id);
 }
 
 function toggleLeft(item: Item) {
-  const exists = isLeftChosen(item);
+  const exists = isLeftselected(item);
   if (exists) {
     selectedLeft.value = selectedLeft.value.filter((i) => i.id !== item.id);
   } else if (selectedLeft.value.length < AVAILABLE_LEFT_ITEMS_COUNT) {
@@ -30,11 +30,16 @@ function selectRight(item: Item) {
 <template>
   <main class="main">
     <div class="container">
-      <ul class="adaptive-grid ">
-        <li v-for="item in selectedLeft" :key="item.id" class="item ">
-          {{ item.name }}
-        </li>
-      </ul>
+      <div class="left-selected">
+        <ul class="adaptive-grid border-none">
+          <li v-for="item in selectedLeft" :key="item.id" class="item ">
+            {{ item.name }}
+          </li>
+        </ul>
+        <div>
+          Selected: {{ selectedLeft.length + '/' + AVAILABLE_LEFT_ITEMS_COUNT}}
+        </div>
+      </div>
       <div class="adaptive-grid">
         <div v-if="selectedRight?.name" class="item ">
           {{ selectedRight?.name }}
@@ -47,7 +52,7 @@ function selectRight(item: Item) {
           :key="item.id"
           @click="toggleLeft(item)"
           class="item "
-          :class="{ chosen: isLeftChosen(item) }"
+          :class="{ selected: isLeftselected(item) }"
         >
           {{ item.name }}
         </li>
@@ -58,7 +63,7 @@ function selectRight(item: Item) {
           :key="item.id"
           @click="selectRight(item)"
           class="item "
-          :class="{ chosen: selectedRight?.id === item.id }"
+          :class="{ selected: selectedRight?.id === item.id }"
         >
           {{ item.name }}
         </li>
@@ -68,6 +73,12 @@ function selectRight(item: Item) {
 </template>
 
 <style scoped>
+  .test {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
 .main {
   font-family: sans-serif;
   padding: 20px;
@@ -79,9 +90,17 @@ function selectRight(item: Item) {
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.3fr 0.7fr;
+  grid-template-rows: 0.4fr 1fr;
   gap: 20px;
   height: 100%;
+}
+
+.left-selected {
+  border: 1px solid white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 li {
@@ -91,8 +110,8 @@ li {
 .adaptive-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 120px));
-  grid-template-rows: repeat(auto-fit, 50px);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  grid-template-rows: repeat(auto-fit, 100px);
   gap: 10px;
   padding: 10px;
   overflow: auto;
@@ -105,13 +124,18 @@ li {
   height: 100%;
   width: 100%;
   text-align: center;
+  line-height: 100px;
   text-align: center;
   border: 1px solid white;
 }
 
-.chosen {
-  background: #18c81e;
+.selected {
+  border: 1px solid #18c81e;
   color: #037907
+}
+
+.border-none {
+  border: none;
 }
 </style>
 
