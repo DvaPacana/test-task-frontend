@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Google Sans", sans-serif;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px;
+    min-height: 100dvh;
+    padding: 24px;
+
+    @media screen and (width < 768px) {
+        padding: 12px;
+    }
+}
+
