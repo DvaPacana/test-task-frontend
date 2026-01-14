@@ -39,6 +39,7 @@
 import { getCatalogData, getUserCatalogData } from '@/api';
 import ItemsList from '@/components/ItemsList.vue';
 import ItemsSelected from '@/components/ItemsSelected.vue';
+import { useCatalogManager } from '@/composables/useCatalogManager';
 import { MAX_LENGTH } from '@/constants';
 
 import { onMounted, ref } from 'vue';
@@ -46,48 +47,37 @@ import { onMounted, ref } from 'vue';
 const isLoading = ref(true);
 const userCatalogItems = ref([]);
 const catalogItems = ref([]);
-const selectedFromUserCatalog = ref([]);
-const selectedFromCatalog = ref([]);
 
-const selectFromUserCatalog = (item) => {
-  if (!selectedFromUserCatalog.value.find((i) => i.id === item.id)) {
-    selectedFromUserCatalog.value.push(item);
+const {
+  selectedItems: selectedFromUserCatalog,
+  selectItem: selectFromUserCatalog,
+  removeItem: removeFromUserCatalog,
+  selectionDisabled: userCatalogSelectionDisabled,
+} = useCatalogManager(MAX_LENGTH.USER_CATALOG);
+
+const {
+  selectedItems: selectedFromCatalog,
+  selectItem: selectFromCatalog,
+  removeItem: removeFromCatalog,
+  selectionDisabled: catalogSelectionDisabled,
+} = useCatalogManager(MAX_LENGTH.CATALOG);
+
+// TODO: Вынести логику загрузки данных
+const loadData = async () => {
+  try {
+    isLoading.value = true;
+    [userCatalogItems.value, catalogItems.value] = await Promise.all([
+      getUserCatalogData(),
+      getCatalogData(),
+    ]);
+  } catch (error) {
+    console.error('Failed to load data:', error);
+  } finally {
+    isLoading.value = false;
   }
 };
 
-const selectFromCatalog = (item) => {
-  if (!selectedFromCatalog.value.find((i) => i.id === item.id)) {
-    selectedFromCatalog.value.push(item);
-  }
-};
-
-const removeFromUserCatalog = (itemId) => {
-  const idx = selectedFromUserCatalog.value.findIndex((i) => i.id === itemId);
-  if (idx > -1) {
-    selectedFromUserCatalog.value.splice(idx, 1);
-  }
-};
-
-const removeFromCatalog = (itemId) => {
-  const idx = selectedFromCatalog.value.findIndex((i) => i.id === itemId);
-  if (idx > -1) {
-    selectedFromCatalog.value.splice(idx, 1);
-  }
-};
-
-const userCatalogSelectionDisabled = () => {
-  return selectedFromUserCatalog.value.length >= MAX_LENGTH.USER_CATALOG;
-};
-
-const catalogSelectionDisabled = () => {
-  return selectedFromCatalog.value.length >= MAX_LENGTH.CATALOG;
-};
-
-onMounted(async () => {
-  userCatalogItems.value = await getUserCatalogData();
-  catalogItems.value = await getCatalogData();
-  isLoading.value = false;
-});
+onMounted(loadData);
 </script>
 
 <style lang="scss" scoped>
