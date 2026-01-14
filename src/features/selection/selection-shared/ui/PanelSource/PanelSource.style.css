@@ -1,0 +1,7 @@
+.source {
+    gap: 1.25rem;
+    min-height: 22rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-auto-rows: min-content;
+}

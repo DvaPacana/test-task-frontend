@@ -1,0 +1,11 @@
+.summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    text-align: center;
+}
+
+.summary__title {
+    font-weight: 500;
+}

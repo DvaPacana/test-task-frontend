@@ -1,0 +1,26 @@
+.tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 1rem;
+    white-space: nowrap;
+    border-radius: 12px;
+    background: #fff;
+    border: 3px solid rgba(16, 35, 59, 0.5);
+    cursor: pointer;
+    min-width: 100px;
+    text-align: center;
+    color: var(--text);
+    transition: box-shadow 0.12s ease;
+    user-select: none;
+
+    &:hover {
+        box-shadow: 0 0.5rem 1rem rgba(12, 22, 40, 0.4);
+    }
+}
+
+.tile--selected {
+    color: #fff;
+    background: linear-gradient(90deg, rgba(108, 92, 231, 0.95), rgba(255, 118, 117, 0.95));
+    box-shadow: 0 0.5rem 2rem rgba(108, 92, 231, 0.18);
+}

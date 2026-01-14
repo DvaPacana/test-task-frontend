@@ -1,0 +1,20 @@
+.widget {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.widget__summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+
+    > *:last-child {
+        grid-column: 3 / span 1;
+    }
+}
+
+.widget__choice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
