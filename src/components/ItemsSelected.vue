@@ -3,46 +3,54 @@
     <ul
       class="items__list"
       :class="{
-        'items--counter': isCounter,
-        'items--single': props.count === 1,
+        'items--counter': !isSingle(),
+        'items--single': isSingle(),
       }"
     >
       <li
         v-for="item in items"
         :key="item.id"
         class="items__item"
-        :class="{
-          'items__item--empty': (props.count === 1 && n === 1) || n >= 4,
-        }"
         @click="handleRemove(item.id)"
       >
         {{ item.name }}
       </li>
+      <li
+        v-for="n in emptySlotsCount"
+        :key="`empty-${n}`"
+        class="items__item items__item--empty"
+      >
+        <div class="empty-dot"></div>
+      </li>
     </ul>
     <div
-      v-if="isCounter"
+      v-if="!isSingle()"
       class="counter"
     >
       <span class="counter__text">selected: </span>
       <span class="counter__current">{{ items.length }}</span
-      >/<span class="counter__total">{{ props.count }}</span>
+      >/<span class="counter__total">{{ maxItems }}</span>
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue';
 const props = defineProps({
-  count: {
-    type: Number,
-    default: 6,
-  },
   items: {
     type: Array,
     required: true,
     default: () => [],
   },
+  maxItems: {
+    type: Number,
+    default: 6,
+  },
 });
-const isCounter = props.count != 1;
+const isSingle = () => props.maxItems === 1;
+const emptySlotsCount = computed(() => {
+  return Math.max(0, props.maxItems - props.items.length);
+});
 
 const emit = defineEmits(['remove-item']);
 
@@ -93,6 +101,8 @@ const handleRemove = (itemId) => {
   overflow: hidden;
   font-size: 0.8em;
   @include flex-center;
+  text-align: center;
+
   user-select: none;
 
   border: 2px dashed #3b82f6;

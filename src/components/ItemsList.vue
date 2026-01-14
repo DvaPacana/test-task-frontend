@@ -6,6 +6,7 @@
       class="items__item"
       :class="{
         'items__item--selected': isSelected(item),
+        'items__item--disabled': isSelectionDisabled && !isSelected(item),
       }"
       @click="handleSelect(item)"
     >
@@ -26,6 +27,13 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  maxItems: {
+    type: Number,
+    default: 6,
+  },
+  selectionDisabled: {
+    default: false,
+  },
 });
 
 const emit = defineEmits(['select-item', 'remove-item']);
@@ -34,9 +42,16 @@ const isSelected = computed(() => (item) => {
   return props.selectedItems?.some((selected) => selected.id === item.id) || false;
 });
 
+const isSelectionDisabled = computed(() => {
+  return props.selectedItems.length >= props.maxItems || props.selectionDisabled.value;
+});
+
 const handleSelect = (item) => {
   if (isSelected.value(item)) {
     emit('remove-item', item.id);
+    return;
+  }
+  if (isSelectionDisabled.value) {
     return;
   }
   emit('select-item', item);

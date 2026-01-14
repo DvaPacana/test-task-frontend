@@ -1,14 +1,14 @@
 <template>
   <header class="header">
     <ItemsSelected
-      :count="6"
       :items="selectedFromUserCatalog"
       @remove-item="removeFromUserCatalog"
+      :max-items="MAX_LENGTH.USER_CATALOG"
     />
     <ItemsSelected
-      :count="1"
       :items="selectedFromCatalog"
       @remove-item="removeFromCatalog"
+      :max-items="MAX_LENGTH.CATALOG"
     />
   </header>
   <main class="main">
@@ -18,6 +18,8 @@
         :selected-items="selectedFromUserCatalog"
         @select-item="selectFromUserCatalog"
         @remove-item="removeFromUserCatalog"
+        :max-items="MAX_LENGTH.USER_CATALOG"
+        :selection-disabled="userCatalogSelectionDisabled"
       />
     </section>
     <section class="section">
@@ -26,6 +28,8 @@
         :selected-items="selectedFromCatalog"
         @select-item="selectFromCatalog"
         @remove-item="removeFromCatalog"
+        :max-items="MAX_LENGTH.CATALOG"
+        :selection-disabled="catalogSelectionDisabled"
       />
     </section>
   </main>
@@ -35,6 +39,7 @@
 import { getCatalogData, getUserCatalogData } from '@/api';
 import ItemsList from '@/components/ItemsList.vue';
 import ItemsSelected from '@/components/ItemsSelected.vue';
+import { MAX_LENGTH } from '@/constants';
 
 import { onMounted, ref } from 'vue';
 
@@ -68,6 +73,14 @@ const removeFromCatalog = (itemId) => {
   if (idx > -1) {
     selectedFromCatalog.value.splice(idx, 1);
   }
+};
+
+const userCatalogSelectionDisabled = () => {
+  return selectedFromUserCatalog.value.length >= MAX_LENGTH.USER_CATALOG;
+};
+
+const catalogSelectionDisabled = () => {
+  return selectedFromCatalog.value.length >= MAX_LENGTH.CATALOG;
 };
 
 onMounted(async () => {
