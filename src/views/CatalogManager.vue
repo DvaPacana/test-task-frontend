@@ -5,17 +5,30 @@
   </header>
   <main class="main">
     <section class="section">
-      <ItemsList />
+      <ItemsList :items="userCatalogItems" />
     </section>
     <section class="section">
-      <ItemsList />
+      <ItemsList :items="catalogItems" />
     </section>
   </main>
 </template>
 
 <script setup>
+import { getCatalogData, getUserCatalogData } from '@/api';
 import ItemsList from '@/components/ItemsList.vue';
 import ItemsSelected from '@/components/ItemsSelected.vue';
+
+import { onMounted, ref } from 'vue';
+
+const isLoading = ref(true);
+const userCatalogItems = ref([]);
+const catalogItems = ref([]);
+
+onMounted(async () => {
+  userCatalogItems.value = await getUserCatalogData();
+  catalogItems.value = await getCatalogData();
+  isLoading.value = false;
+});
 </script>
 
 <style lang="scss" scoped>

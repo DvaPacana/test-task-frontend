@@ -1,17 +1,28 @@
 <template>
   <ul class="items__list">
     <li
-      v-for="n in 12"
-      :key="n"
+      v-for="item in items"
+      :key="item.id"
       class="items__item"
-      :class="{ 'items__item--selected': n % 3 === 2, 'items__item--disabled': n % 3 === 0 }"
+      :class="{
+        'items__item--selected': item.id % 3 === 2,
+        'items__item--disabled': item.id % 3 === 0,
+      }"
     >
-      {{ `item ${n}` }}
+      {{ item.name }}
     </li>
   </ul>
 </template>
 
-<script setup></script>
+<script setup>
+defineProps({
+  items: {
+    type: Array,
+    required: true,
+    default: () => [],
+  },
+});
+</script>
 
 <style lang="scss" scoped>
 .items__list {
