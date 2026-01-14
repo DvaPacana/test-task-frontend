@@ -16,7 +16,6 @@ const props = withDefaults(
   }>(),
   {
     maxSelectedCount: 6,
-    theme: 'primary',
   },
 )
 
