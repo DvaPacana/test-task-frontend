@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  vue-app-dockerize:
+    # Устанавливаем имя для контейнера
+    container_name: vue-docker--hot-reload--container
+
+    # Устанавливаем имя для образа
+    image: vue-docker--hot-reload--image
+
+    # Собираем образ используя Dockerfile в текущей директории
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+      - '5173:5173' # <host_port>:<container_port/protocol_port>
+
+    # Монтируем текущую директорию вв директорию /app в контейнер
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    # Контейнер стартует с командой
+    command: npm run dev

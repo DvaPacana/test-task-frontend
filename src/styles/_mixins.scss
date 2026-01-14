@@ -1,0 +1,11 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin list-none {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
