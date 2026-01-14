@@ -271,11 +271,11 @@ http://localhost:5173/
 
 ### Ключевые навыки
 
-    <code>Git</code>
-    <code>SCSS</code>
-    <code>Frontend</code>
-    <code>Vue</code>
-    <code>Vuex</code>
-    <code>Vue.js</code>
-    <code>HTML/CSS</code>
-    <code>BEM</code>
+<code>Git</code>
+<code>SCSS</code>
+<code>Frontend</code>
+<code>Vue</code>
+<code>Vuex</code>
+<code>Vue.js</code>
+<code>HTML/CSS</code>
+<code>BEM</code>
