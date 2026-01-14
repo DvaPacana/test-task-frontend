@@ -1,14 +1,32 @@
 <template>
   <header class="header">
-    <ItemsSelected :count="6" />
-    <ItemsSelected :count="1" />
+    <ItemsSelected
+      :count="6"
+      :items="selectedFromUserCatalog"
+      @remove-item="removeFromUserCatalog"
+    />
+    <ItemsSelected
+      :count="1"
+      :items="selectedFromCatalog"
+      @remove-item="removeFromCatalog"
+    />
   </header>
   <main class="main">
     <section class="section">
-      <ItemsList :items="userCatalogItems" />
+      <ItemsList
+        :items="userCatalogItems"
+        :selected-items="selectedFromUserCatalog"
+        @select-item="selectFromUserCatalog"
+        @remove-item="removeFromUserCatalog"
+      />
     </section>
     <section class="section">
-      <ItemsList :items="catalogItems" />
+      <ItemsList
+        :items="catalogItems"
+        :selected-items="selectedFromCatalog"
+        @select-item="selectFromCatalog"
+        @remove-item="removeFromCatalog"
+      />
     </section>
   </main>
 </template>
@@ -23,6 +41,34 @@ import { onMounted, ref } from 'vue';
 const isLoading = ref(true);
 const userCatalogItems = ref([]);
 const catalogItems = ref([]);
+const selectedFromUserCatalog = ref([]);
+const selectedFromCatalog = ref([]);
+
+const selectFromUserCatalog = (item) => {
+  if (!selectedFromUserCatalog.value.find((i) => i.id === item.id)) {
+    selectedFromUserCatalog.value.push(item);
+  }
+};
+
+const selectFromCatalog = (item) => {
+  if (!selectedFromCatalog.value.find((i) => i.id === item.id)) {
+    selectedFromCatalog.value.push(item);
+  }
+};
+
+const removeFromUserCatalog = (itemId) => {
+  const idx = selectedFromUserCatalog.value.findIndex((i) => i.id === itemId);
+  if (idx > -1) {
+    selectedFromUserCatalog.value.splice(idx, 1);
+  }
+};
+
+const removeFromCatalog = (itemId) => {
+  const idx = selectedFromCatalog.value.findIndex((i) => i.id === itemId);
+  if (idx > -1) {
+    selectedFromCatalog.value.splice(idx, 1);
+  }
+};
 
 onMounted(async () => {
   userCatalogItems.value = await getUserCatalogData();

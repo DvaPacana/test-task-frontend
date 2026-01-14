@@ -5,9 +5,9 @@
       :key="item.id"
       class="items__item"
       :class="{
-        'items__item--selected': item.id % 3 === 2,
-        'items__item--disabled': item.id % 3 === 0,
+        'items__item--selected': isSelected(item),
       }"
+      @click="handleSelect(item)"
     >
       {{ item.name }}
     </li>
@@ -15,13 +15,32 @@
 </template>
 
 <script setup>
-defineProps({
+import { computed } from 'vue';
+const props = defineProps({
   items: {
     type: Array,
     required: true,
     default: () => [],
   },
+  selectedItems: {
+    type: Array,
+    default: () => [],
+  },
 });
+
+const emit = defineEmits(['select-item', 'remove-item']);
+
+const isSelected = computed(() => (item) => {
+  return props.selectedItems?.some((selected) => selected.id === item.id) || false;
+});
+
+const handleSelect = (item) => {
+  if (isSelected.value(item)) {
+    emit('remove-item', item.id);
+    return;
+  }
+  emit('select-item', item);
+};
 </script>
 
 <style lang="scss" scoped>

@@ -8,14 +8,15 @@
       }"
     >
       <li
-        v-for="n in props.count"
-        :key="n"
+        v-for="item in items"
+        :key="item.id"
         class="items__item"
         :class="{
           'items__item--empty': (props.count === 1 && n === 1) || n >= 4,
         }"
+        @click="handleRemove(item.id)"
       >
-        {{ `item ${n}` }}
+        {{ item.name }}
       </li>
     </ul>
     <div
@@ -23,7 +24,7 @@
       class="counter"
     >
       <span class="counter__text">selected: </span>
-      <span class="counter__current">{{ props.count }}</span
+      <span class="counter__current">{{ items.length }}</span
       >/<span class="counter__total">{{ props.count }}</span>
     </div>
   </div>
@@ -35,8 +36,19 @@ const props = defineProps({
     type: Number,
     default: 6,
   },
+  items: {
+    type: Array,
+    required: true,
+    default: () => [],
+  },
 });
 const isCounter = props.count != 1;
+
+const emit = defineEmits(['remove-item']);
+
+const handleRemove = (itemId) => {
+  emit('remove-item', itemId);
+};
 </script>
 
 <style lang="scss" scoped>
