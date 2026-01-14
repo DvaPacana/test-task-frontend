@@ -1,0 +1,14 @@
+.panel {
+    border-radius: 0.75rem;
+    padding: 0.85rem;
+    box-shadow: 0 0.75rem 2rem rgba(16, 30, 40, 0.06);
+    border: 1px solid rgba(16, 30, 40, 0.04);
+}
+
+.panel--primary {
+    background-color: var(--lavender);
+}
+
+.panel--secondary {
+    background-color: var(--teal);
+}
