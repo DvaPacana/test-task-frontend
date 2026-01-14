@@ -1,5 +1,44 @@
-# Vue 3 + TypeScript + Vite
+# Выбор одежды
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Тестовое задание, интерфейс выбора вещей на Vue 3.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Запуск
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Откроется на http://localhost:5173
+
+## Стек
+
+- Vue 3 + Composition API
+- TypeScript
+- Vite
+- Vitest
+- ESLint + Prettier
+
+## Структура
+
+```
+src/
+├── composables/     # useMultiSelect, useSingleSelect
+├── components/      # ItemCard
+├── data/            # данные вещей
+└── types/           # типы
+```
+
+Логика выбора вынесена в composable, покрыта тестами. Компоненты простые и переиспользуемые.
+
+## Тесты
+
+```bash
+pnpm test
+```
+
+## Сборка
+
+```bash
+pnpm build
+```
