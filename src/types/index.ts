@@ -1,5 +1,8 @@
-export interface ClothingItem {
+export interface Identifiable {
   readonly id: number
+}
+
+export interface ClothingItem extends Identifiable {
   readonly name: string
 }
 

@@ -1,30 +1,118 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { useMultiSelect, useSingleSelect } from '@/composables'
+import { userItems, choiceItems } from '@/data/items'
+import type { ClothingItem } from '@/types'
+import ItemCard from '@/components/ItemCard.vue'
+
+const userSelection = useMultiSelect<ClothingItem>({ min: 1, max: 6 })
+const choiceSelection = useSingleSelect<ClothingItem>()
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <main class="app">
+    <section class="row">
+      <div class="panel">
+        <div class="display-area">
+          <ItemCard
+            v-for="item in userSelection.selected.value"
+            :key="item.id"
+            :label="item.name"
+            selected
+          />
+        </div>
+        <span class="counter">выбрано: {{ userSelection.count.value }} / 6</span>
+      </div>
+
+      <div class="panel display-area single">
+        <ItemCard
+          v-if="choiceSelection.selected.value"
+          :label="choiceSelection.selected.value.name"
+          selected
+        />
+        <span v-else class="placeholder">Выбранная вещь</span>
+      </div>
+    </section>
+
+    <section class="row">
+      <div class="panel">
+        <div class="grid">
+          <ItemCard
+            v-for="item in userItems"
+            :key="item.id"
+            :label="item.name"
+            :selected="userSelection.isSelected(item)"
+            :disabled="!userSelection.canSelect.value && !userSelection.isSelected(item)"
+            @click="userSelection.toggle(item)"
+          />
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="grid">
+          <ItemCard
+            v-for="item in choiceItems"
+            :key="item.id"
+            :label="item.name"
+            :selected="choiceSelection.isSelected(item)"
+            @click="choiceSelection.toggle(item)"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.app {
+  --card-size: 40px;
+  --gap: 8px;
+  --border: 2px solid #000;
+
+  max-width: 700px;
+  margin: 20px auto;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.panel {
+  border: var(--border);
+  padding: 15px;
+}
+
+.display-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  min-height: calc(var(--card-size) * 2 + var(--gap));
+}
+
+.display-area.single {
+  align-items: center;
+  justify-content: center;
+}
+
+.display-area :deep(.card) {
+  width: 70px;
+}
+
+.counter {
+  display: block;
+  margin-top: 10px;
+  color: #666;
+}
+
+.placeholder {
+  color: #999;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
 }
 </style>
