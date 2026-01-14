@@ -1,17 +1,26 @@
 <template>
-  <header class="header"></header>
+  <header class="header">
+    <ItemsSelected :count="6" />
+    <ItemsSelected :count="1" />
+  </header>
   <main class="main">
-    <section class="section"></section>
-    <section class="section"></section>
+    <section class="section">
+      <ItemsList />
+    </section>
+    <section class="section">
+      <ItemsList />
+    </section>
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+import ItemsList from '@/components/ItemsList.vue';
+import ItemsSelected from '@/components/ItemsSelected.vue';
+</script>
 
 <style lang="scss" scoped>
 .main {
   min-height: calc(100vh - $header-height);
-
   display: flex;
   flex-direction: column;
 
@@ -22,7 +31,7 @@
 
 .section {
   min-height: calc(100vh - $header-height);
-
+  padding: $grid-gap;
   @media (min-width: 992px) {
     flex: 1;
   }
@@ -31,7 +40,7 @@
 .header {
   position: sticky;
   top: 0;
-  padding: $padding-container;
+  padding: $grid-gap;
   display: flex;
   justify-content: space-between;
 
