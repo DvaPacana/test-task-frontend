@@ -1,86 +1,81 @@
 <template>
-  <header class="header">
-    <ItemsSelected
-      :items="selectedFromUserCatalog"
-      @remove-item="removeFromUserCatalog"
-      :max-items="MAX_LENGTH.USER_CATALOG"
-    />
-    <ItemsSelected
-      :items="selectedFromCatalog"
-      @remove-item="removeFromCatalog"
-      :max-items="MAX_LENGTH.CATALOG"
-    />
-  </header>
-  <main class="main">
-    <section class="section">
-      <ItemsList
-        :items="userCatalogItems"
-        :selected-items="selectedFromUserCatalog"
-        @select-item="selectFromUserCatalog"
-        @remove-item="removeFromUserCatalog"
+  <template v-if="isLoading">
+    <div class="loading">Loading</div>
+  </template>
+  <template v-else>
+    <header class="header">
+      <ItemsSelected
+        :items="selectedUserItems"
+        @remove-item="removeUserItem"
         :max-items="MAX_LENGTH.USER_CATALOG"
-        :selection-disabled="userCatalogSelectionDisabled"
       />
-    </section>
-    <section class="section">
-      <ItemsList
-        :items="catalogItems"
-        :selected-items="selectedFromCatalog"
-        @select-item="selectFromCatalog"
-        @remove-item="removeFromCatalog"
+      <ItemsSelected
+        :items="selectedCatalogItems"
+        @remove-item="removeCatalogItem"
         :max-items="MAX_LENGTH.CATALOG"
-        :selection-disabled="catalogSelectionDisabled"
       />
-    </section>
-  </main>
+    </header>
+    <main class="main">
+      <section class="section">
+        <ItemsList
+          :items="userCatalogItems"
+          :selected-items="selectedUserItems"
+          @select-item="selectUserItem"
+          @remove-item="removeUserItem"
+          :max-items="MAX_LENGTH.USER_CATALOG"
+          :selection-disabled="isUserSelectionFull"
+        />
+      </section>
+      <section class="section">
+        <ItemsList
+          :items="catalogItems"
+          :selected-items="selectedCatalogItems"
+          @select-item="selectCatalogItem"
+          @remove-item="removeCatalogItem"
+          :max-items="MAX_LENGTH.CATALOG"
+          :selection-disabled="isCatalogSelectionFull"
+        />
+      </section>
+    </main>
+  </template>
 </template>
 
 <script setup>
-import { getCatalogData, getUserCatalogData } from '@/api';
 import ItemsList from '@/components/ItemsList.vue';
 import ItemsSelected from '@/components/ItemsSelected.vue';
-import { useCatalogManager } from '@/composables/useCatalogManager';
 import { MAX_LENGTH } from '@/constants';
+import { computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
 
-import { onMounted, ref } from 'vue';
+const store = useStore();
 
-const isLoading = ref(true);
-const userCatalogItems = ref([]);
-const catalogItems = ref([]);
+const isLoading = computed(() => store.state.catalogManager.isLoading);
+const userCatalogItems = computed(() => store.state.catalogManager.userCatalogItems);
+const catalogItems = computed(() => store.state.catalogManager.catalogItems);
+const selectedUserItems = computed(() => store.state.catalogManager.selectedUserCatalogItems);
+const selectedCatalogItems = computed(() => store.state.catalogManager.selectedCatalogItems);
 
-const {
-  selectedItems: selectedFromUserCatalog,
-  selectItem: selectFromUserCatalog,
-  removeItem: removeFromUserCatalog,
-  selectionDisabled: userCatalogSelectionDisabled,
-} = useCatalogManager(MAX_LENGTH.USER_CATALOG);
+const isUserSelectionFull = computed(() => store.getters['catalogManager/isUserSelectionFull']);
+const isCatalogSelectionFull = computed(
+  () => store.getters['catalogManager/isCatalogSelectionFull'],
+);
 
-const {
-  selectedItems: selectedFromCatalog,
-  selectItem: selectFromCatalog,
-  removeItem: removeFromCatalog,
-  selectionDisabled: catalogSelectionDisabled,
-} = useCatalogManager(MAX_LENGTH.CATALOG);
+const fetchData = () => store.dispatch('catalogManager/fetchAllData');
+const selectUserItem = (item) => store.dispatch('catalogManager/selectUserItem', item);
+const removeUserItem = (itemId) => store.dispatch('catalogManager/removeUserItem', itemId);
+const selectCatalogItem = (item) => store.dispatch('catalogManager/selectCatalogItem', item);
+const removeCatalogItem = (itemId) => store.dispatch('catalogManager/removeCatalogItem', itemId);
 
-// TODO: Вынести логику загрузки данных
-const loadData = async () => {
-  try {
-    isLoading.value = true;
-    [userCatalogItems.value, catalogItems.value] = await Promise.all([
-      getUserCatalogData(),
-      getCatalogData(),
-    ]);
-  } catch (error) {
-    console.error('Failed to load data:', error);
-  } finally {
-    isLoading.value = false;
-  }
-};
-
-onMounted(loadData);
+onMounted(() => {
+  fetchData();
+});
 </script>
 
 <style lang="scss" scoped>
+.loading {
+  height: 100vh;
+  @include flex-center;
+}
 .main {
   min-height: calc(100vh - $header-height);
   display: flex;
