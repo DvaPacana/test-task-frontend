@@ -51,7 +51,7 @@ describe('useMultiSelect', () => {
   })
 
   it('prevents selecting more than max items', () => {
-    const { select, selected, canSelect } = useMultiSelect({ min: 1, max: 3 })
+    const { select, selected, canSelect } = useMultiSelect({ max: 3 })
     select(mockItems[0])
     select(mockItems[1])
     select(mockItems[2])
