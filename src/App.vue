@@ -4,7 +4,7 @@ import { userItems, choiceItems } from '@/data/items'
 import type { ClothingItem } from '@/types'
 import ItemCard from '@/components/ItemCard.vue'
 
-const userSelection = useMultiSelect<ClothingItem>({ min: 1, max: 6 })
+const userSelection = useMultiSelect<ClothingItem>({ max: 6 })
 const choiceSelection = useSingleSelect<ClothingItem>()
 </script>
 
@@ -114,5 +114,19 @@ const choiceSelection = useSingleSelect<ClothingItem>()
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--gap);
+}
+
+@media (max-width: 500px) {
+  .app {
+    margin: 10px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>

@@ -13,7 +13,7 @@ export interface UseMultiSelectReturn<T extends Identifiable> {
 }
 
 export const useMultiSelect = <T extends Identifiable>(
-  constraints: SelectionConstraints = { min: 1, max: 6 }
+  constraints: SelectionConstraints = { max: 6 }
 ): UseMultiSelectReturn<T> => {
   const selected = ref<T[]>([]) as Ref<T[]>
 

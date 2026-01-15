@@ -7,6 +7,5 @@ export interface ClothingItem extends Identifiable {
 }
 
 export interface SelectionConstraints {
-  readonly min: number
   readonly max: number
 }
