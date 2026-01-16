@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { Item } from '../types/item';
 
-const MAX_USER_SELECTIONS = 6;
+export const MAX_USER_SELECTIONS = 6;
 
 export const useItemsStore = defineStore('items', () => {
   const selectedUserItems = ref<Item[]>([]);
@@ -45,6 +45,7 @@ export const useItemsStore = defineStore('items', () => {
     selectedUserItems,
     selectedAvailableItem,
     canSelectMoreUserItems,
+    maxUserSelections: MAX_USER_SELECTIONS,
     toggleUserItem,
     selectAvailableItem,
     isUserItemSelected,

@@ -4,7 +4,7 @@ import { useItemsStore } from '../stores/itemsStore';
 import ItemCard from './ItemCard.vue';
 
 const store = useItemsStore();
-const { selectedUserItems } = storeToRefs(store);
+const { selectedUserItems, maxUserSelections } = storeToRefs(store);
 </script>
 
 <template>
@@ -19,7 +19,7 @@ const { selectedUserItems } = storeToRefs(store);
       />
     </div>
     <div class="selected-panel__counter">
-      selected: {{ selectedUserItems.length }} / 6
+      selected: {{ selectedUserItems.length }} / {{ maxUserSelections }}
     </div>
   </div>
 </template>
