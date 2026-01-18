@@ -21,24 +21,24 @@ defineEmits<{ click: [] }>()
 
 <style scoped>
 .item-card {
-  padding: 12px 16px;
+  padding: var(--spacing-md);
   text-align: center;
-  color: #333333;
-  background: #ffffff;
-  border: 2px solid #333333;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   user-select: none;
 }
 
 .item-card:hover:not(.disabled) {
-  background: #f5f5f5;
-  border-color: #666666;
+  background: var(--color-bg-hover);
+  border-color: var(--color-border-hover);
 }
 
 .item-card.selected {
-  background: #e3f2fd;
-  border-color: #4a90d9;
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
 }
 
 .item-card.disabled {

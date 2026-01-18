@@ -1,35 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import ItemCard from './components/ItemCard.vue'
-
-interface Item {
-  id: number
-  name: string
-}
-
-const MAX_USER_ITEMS = 6
-
-const userItems = ref<Item[]>([
-  { id: 1, name: 'Shoes 1' },
-  { id: 2, name: 'Shoes 2' },
-  { id: 3, name: 'Shoes 3' },
-  { id: 4, name: 'Shoes 4' },
-  { id: 5, name: 'T-shirt 1' },
-  { id: 6, name: 'T-shirt 2' },
-  { id: 7, name: 'T-shirt 3' },
-  { id: 8, name: 'T-shirt 4' },
-])
-
-const availableItems = ref<Item[]>([
-  { id: 11, name: 'Jacket 1' },
-  { id: 12, name: 'Jacket 2' },
-  { id: 13, name: 'Jacket 3' },
-  { id: 14, name: 'Jacket 4' },
-  { id: 15, name: 'Hoodie 1' },
-  { id: 16, name: 'Hoodie 2' },
-  { id: 17, name: 'Hoodie 3' },
-  { id: 18, name: 'Hoodie 4' },
-])
+import ItemCard from '@/components/ItemCard.vue'
+import type { Item } from '@/types'
+import { USER_ITEMS, AVAILABLE_ITEMS, MAX_USER_ITEMS } from '@/data/items'
 
 const selectedUserItems = ref<Item[]>([])
 const selectedAvailableItem = ref<Item | null>(null)
@@ -95,7 +68,7 @@ const toggleAvailableItem = (item: Item): void => {
       <div class="panel items-panel">
         <div class="items-grid">
           <ItemCard
-            v-for="item in userItems"
+            v-for="item in USER_ITEMS"
             :name="item.name"
             :selected="isUserItemSelected(item.id)"
             :disabled="!isUserItemSelected(item.id) && !canSelectMoreUserItems"
@@ -109,7 +82,7 @@ const toggleAvailableItem = (item: Item): void => {
       <div class="panel items-panel">
         <div class="items-grid">
           <ItemCard
-            v-for="item in availableItems"
+            v-for="item in AVAILABLE_ITEMS"
             :name="item.name"
             :selected="isAvailableItemSelected(item.id)"
             :key="item.id"
@@ -125,7 +98,7 @@ const toggleAvailableItem = (item: Item): void => {
 .app-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--spacing-xl);
   width: 100%;
   max-width: 900px;
 }
@@ -134,13 +107,13 @@ const toggleAvailableItem = (item: Item): void => {
 .bottom-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: var(--spacing-xl);
 }
 
 .panel {
   min-height: 150px;
-  padding: 16px;
-  border: 2px solid #333333;
+  padding: var(--spacing-lg);
+  border: var(--border-width) solid var(--color-border);
 }
 
 .selected-user-panel {
@@ -149,18 +122,13 @@ const toggleAvailableItem = (item: Item): void => {
 }
 
 .selected-items-grid {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.selected-items-grid {
-  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-sm);
 }
 
 .counter {
-  margin-top: 12px;
+  margin-top: auto;
   font-size: 14px;
   text-align: left;
 }
@@ -180,7 +148,11 @@ const toggleAvailableItem = (item: Item): void => {
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  color: #333333;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
 }
 
 .items-panel {
@@ -190,6 +162,6 @@ const toggleAvailableItem = (item: Item): void => {
 .items-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: var(--spacing-sm);
 }
 </style>
