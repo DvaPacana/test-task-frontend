@@ -11,7 +11,7 @@ defineProps<Props>()
 
 <template>
   <section
-    class="selected-available-panel"
+    class="panel selected-available-panel"
     aria-label="Selected available item"
   >
     <div
@@ -33,8 +33,6 @@ defineProps<Props>()
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--spacing-lg);
-  border: var(--border-width) solid var(--color-border);
 }
 
 .selected-single-item {

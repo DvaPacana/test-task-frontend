@@ -10,7 +10,7 @@ describe('App', () => {
 
   it('renders user items grid', () => {
     const wrapper = mount(App)
-    const userItems = wrapper.findAll('.items-grid button')
+    const userItems = wrapper.findAll('.grid-4-cols button')
     expect(userItems.length).toBe(16) // 8 user items + 8 available items
   })
 
@@ -28,7 +28,9 @@ describe('App', () => {
     await firstItem.trigger('click')
 
     expect(wrapper.find('.counter').text()).toBe('selected: 1 / 6')
-    expect(wrapper.find('.selected-items-grid button').exists()).toBe(true)
+    expect(
+      wrapper.find('.selected-user-panel .grid-4-cols button').exists()
+    ).toBe(true)
   })
 
   it('deselects user item on second click', async () => {
@@ -129,7 +131,7 @@ describe('App', () => {
     await items[2]!.trigger('click') // Shoes 3
     await items[0]!.trigger('click') // Shoes 1
 
-    const selectedItems = wrapper.findAll('.selected-items-grid button')
+    const selectedItems = wrapper.findAll('.selected-user-panel .grid-4-cols button')
     expect(selectedItems[0]!.text()).toBe('Shoes 3')
     expect(selectedItems[1]!.text()).toBe('Shoes 1')
   })

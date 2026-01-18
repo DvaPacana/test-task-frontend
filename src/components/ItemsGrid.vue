@@ -24,7 +24,7 @@ const getItemAriaLabel = (item: Item): string => {
 
 <template>
   <section class="items-grid-section" :aria-label="label">
-    <div class="items-grid" role="group" :aria-label="label">
+    <div class="grid-4-cols" role="group" :aria-label="label">
       <ItemCard
         v-for="item in items"
         :name="item.name"
@@ -41,18 +41,6 @@ const getItemAriaLabel = (item: Item): string => {
 <style scoped>
 .items-grid-section {
   min-height: 300px;
-}
-
-.items-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-sm);
-}
-
-@media (max-width: 768px) {
-  .items-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 480px) {

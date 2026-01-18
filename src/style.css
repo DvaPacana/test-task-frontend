@@ -81,3 +81,55 @@ body {
     background-color: #f9f9f9;
   }
 }
+
+/* Utility classes */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Common panel styles */
+.panel {
+  padding: var(--spacing-lg);
+  border: var(--border-width) solid var(--color-border);
+}
+
+@media (max-width: 480px) {
+  .panel {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Common grid styles */
+.grid-4-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+  .grid-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Row layouts */
+.row-2-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+  .row-2-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}
