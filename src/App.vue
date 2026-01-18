@@ -19,8 +19,12 @@ const isUserItemDisabled = (id: number): boolean =>
       <SelectedUserItems
         :items="store.selectedUserItems"
         :max-items="store.maxUserItems"
+        @deselect="store.toggleUserItem"
       />
-      <SelectedAvailableItem :item="store.selectedAvailableItem" />
+      <SelectedAvailableItem
+        :item="store.selectedAvailableItem"
+        @deselect="store.clearAvailableSelection"
+      />
     </div>
 
     <!-- Bottom Row: Item Selection Grids -->

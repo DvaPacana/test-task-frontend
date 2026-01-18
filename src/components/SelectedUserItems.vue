@@ -2,19 +2,23 @@
 import ItemCard from '@/components/ItemCard.vue'
 import type { Item } from '@/types'
 
-interface Props {
+defineProps<{
   items: Item[]
   maxItems: number
-}
+}>()
 
-defineProps<Props>()
+defineEmits<{ deselect: [item: Item] }>()
 </script>
 
 <template>
   <section class="panel selected-user-panel" aria-label="Selected user items">
     <div class="grid-4-cols" role="list" aria-label="Your selected items">
       <div v-for="item in items" :key="item.id" role="listitem">
-        <ItemCard :name="item.name" :interactive="false" :selected="true" />
+        <ItemCard
+          :name="item.name"
+          :selected="true"
+          @click="$emit('deselect', item)"
+        />
       </div>
     </div>
     <p class="counter" aria-live="polite">

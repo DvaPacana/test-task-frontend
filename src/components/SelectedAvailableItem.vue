@@ -2,11 +2,11 @@
 import ItemCard from '@/components/ItemCard.vue'
 import type { Item } from '@/types'
 
-interface Props {
+defineProps<{
   item: Item | null
-}
+}>()
 
-defineProps<Props>()
+defineEmits<{ deselect: [] }>()
 </script>
 
 <template>
@@ -20,7 +20,7 @@ defineProps<Props>()
       role="status"
       aria-live="polite"
     >
-      <ItemCard :name="item.name" :interactive="false" :selected="true" />
+      <ItemCard :name="item.name" :selected="true" @click="$emit('deselect')" />
     </div>
     <p v-else class="placeholder" role="status" aria-live="polite">
       SELECTED ITEM
