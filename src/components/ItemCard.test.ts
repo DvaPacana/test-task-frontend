@@ -24,11 +24,11 @@ describe('ItemCard', () => {
     expect(wrapper.classes()).not.toContain('selected')
   })
 
-  it('has disabled class when disabled prop is true', () => {
+  it('is disabled when disabled prop is true', () => {
     const wrapper = mount(ItemCard, {
       props: { name: 'Test', disabled: true },
     })
-    expect(wrapper.classes()).toContain('disabled')
+    expect(wrapper.find('button').attributes('disabled')).toBeDefined()
   })
 
   it('emits click event when clicked and not disabled', async () => {
@@ -51,7 +51,29 @@ describe('ItemCard', () => {
     const wrapper = mount(ItemCard, {
       props: { name: 'Test' },
     })
-    expect(wrapper.classes()).toContain('selected')
-    expect(wrapper.classes()).not.toContain('disabled')
+    expect(wrapper.classes()).not.toContain('selected')
+    expect(wrapper.find('button').attributes('disabled')).toBeUndefined()
+  })
+
+  it('is a button element for accessibility', () => {
+    const wrapper = mount(ItemCard, {
+      props: { name: 'Test' },
+    })
+    expect(wrapper.element.tagName).toBe('BUTTON')
+  })
+
+  it('has aria-pressed attribute when interactive', () => {
+    const wrapper = mount(ItemCard, {
+      props: { name: 'Test', selected: true, interactive: true },
+    })
+    expect(wrapper.attributes('aria-pressed')).toBe('true')
+  })
+
+  it('does not emit click when non-interactive', async () => {
+    const wrapper = mount(ItemCard, {
+      props: { name: 'Test', interactive: false },
+    })
+    await wrapper.trigger('click')
+    expect(wrapper.emitted('click')).toBeUndefined()
   })
 })

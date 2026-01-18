@@ -1,116 +1,111 @@
-<!-- title: Тестовое задание -->
-<p>
-    <h1 align="center">Тестовое задание VueJS</h1>
-    <br>
-</p>
+# Clothing Selection Interface
 
-> После пуша Vue в ваш репозиторий, сделайте задание в любой другой ветке и PR в основную.  
-> Подойдет как Vue2, так и Vue3
+Vue.js test task implementation - interactive clothing selection page.
 
-</br>
+## Author
 
-![IMAGE](src/assets/image.png 'Image')
+**Бойко Алексей Сергеевич**
+- Phone: +79956122561
+- Telegram: [@AlexeyBoi](https://t.me/AlexeyBoi)
 
-Задача: сделать рабочую страницу с изображения.
+## Tech Stack
 
-Дизайн не требуется. Достаточно схематичной страницы, как на изображении.
+- **Vue 3** - Composition API with `<script setup>`
+- **TypeScript** - Strict type checking
+- **Vite** - Build tool and dev server
+- **Pinia** - State management
+- **Vitest** - Unit testing
+- **ESLint + Prettier + Stylelint** - Code quality
 
-#### Блоки снизу:
+## Project Setup
 
-Слева - вещи у пользователя  
-Справа - вещи на выбор
+```bash
+# Install dependencies
+npm install
 
-#### Блоки сверху:
+# Start development server
+npm run dev
 
-Слева - выбранные вещи из вещей пользователя (блок снизу-слева)  
-Справа - выбранная вещь из вещей на выбор (блок снизу-справа).
+# Build for production
+npm run build
 
-Объекты вещей имеют одинаковую структуру, отличаются только названием и номером.
+# Run unit tests
+npm run test
 
----
+# Run tests with coverage
+npm run test:coverage
 
-## Механика работы
-
-Снизу-справа можно выбрать одновременно `только 1 вещь`, которая должна отображаться справа-сверху.
-
-Снизу-слева можно выбрать `от 1 до 6 вещей`, которые должны отображаться в верхней левой части в порядке выбора.
-
----
-
-Коллекции для заполнения нижних блоков слева и справа:
-
-### Блок слева
+# Lint code
+npm run lint
 ```
+
+## Project Structure
+
+```
+src/
+├── components/           # Vue components
+│   ├── ItemCard.vue      # Item card (accessible button)
+│   ├── ItemsGrid.vue     # Reusable grid for items
+│   ├── SelectedUserItems.vue
+│   └── SelectedAvailableItem.vue
+├── stores/               # Pinia stores
+│   └── items.ts          # Items selection state
+├── types/                # TypeScript types
+│   └── index.ts
+├── data/                 # Static data
+│   └── items.ts
+├── App.vue               # Main app component
+└── main.ts               # Entry point
+```
+
+## Features
+
+- Select 1-6 items from user's items (bottom-left)
+- Select 1 item from available items (bottom-right)
+- Selected items displayed in top panels
+- Responsive design (mobile, tablet, desktop)
+- Keyboard navigation support
+- ARIA labels for screen readers
+- 100% test coverage
+
+---
+
+## Task Description
+
+![Task](src/assets/image.png)
+
+### Bottom blocks:
+- Left - user's items
+- Right - available items
+
+### Top blocks:
+- Left - selected items from user's items (1-6)
+- Right - selected item from available items (1)
+
+### User Items
+```json
 [
-    {
-        "id": 1,
-        "name": "Shoes 1"
-    },
-    {
-        "id": 2,
-        "name": "Shoes 2"
-    },
-    {
-        "id": 3,
-        "name": "Shoes 3"
-    },
-    {
-        "id": 4,
-        "name": "Shoes 4"
-    },
-    {
-        "id": 5,
-        "name": "T-shirt 1"
-    },
-    {
-        "id": 6,
-        "name": "T-shirt 2"
-    },
-    {
-        "id": 7,
-        "name": "T-shirt 3"
-    },
-    {
-        "id": 8,
-        "name": "T-shirt 4"
-    }
+  { "id": 1, "name": "Shoes 1" },
+  { "id": 2, "name": "Shoes 2" },
+  { "id": 3, "name": "Shoes 3" },
+  { "id": 4, "name": "Shoes 4" },
+  { "id": 5, "name": "T-shirt 1" },
+  { "id": 6, "name": "T-shirt 2" },
+  { "id": 7, "name": "T-shirt 3" },
+  { "id": 8, "name": "T-shirt 4" }
 ]
 ```
 
-### Блок справа
-```
+### Available Items
+```json
 [
-    {
-        "id": 11,
-        "name": "Jacket 1"
-    },
-    {
-        "id": 12,
-        "name": "Jacket 2"
-    },
-    {
-        "id": 13,
-        "name": "Jacket 3"
-    },
-    {
-        "id": 14,
-        "name": "Jacket 4"
-    },
-    {
-        "id": 15,
-        "name": "Hoodie 1"
-    },
-    {
-        "id": 16,
-        "name": "Hoodie 2"
-    },
-    {
-        "id": 17,
-        "name": "Hoodie 3"
-    },
-    {
-        "id": 18,
-        "name": "Hoodie 4"
-    }
+  { "id": 11, "name": "Jacket 1" },
+  { "id": 12, "name": "Jacket 2" },
+  { "id": 13, "name": "Jacket 3" },
+  { "id": 14, "name": "Jacket 4" },
+  { "id": 15, "name": "Hoodie 1" },
+  { "id": 16, "name": "Hoodie 2" },
+  { "id": 17, "name": "Hoodie 3" },
+  { "id": 18, "name": "Hoodie 4" }
 ]
 ```
