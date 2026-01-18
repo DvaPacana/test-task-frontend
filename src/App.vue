@@ -155,7 +155,7 @@ const toggleAvailableItem = (item: Item): void => {
   gap: 8px;
 }
 
-.selected-items-grid .item-card {
+.selected-items-grid {
   flex: 0 0 auto;
 }
 
