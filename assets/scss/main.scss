@@ -1,0 +1,18 @@
+@import 'variables';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Base styles
+html {
+  @apply antialiased;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 min-h-screen;
+}
+
+// Selection highlight reset
+::selection {
+  @apply bg-gray-300;
+}
