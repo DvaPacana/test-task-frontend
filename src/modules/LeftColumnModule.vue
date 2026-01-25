@@ -15,6 +15,7 @@ const selected = ref([])
     <SelectedBlock
         title="Множественный выбор"
         :items="selected"
+        :is-show-count="true"
     />
 
     <ItemsList
