@@ -1,0 +1,42 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-recommended-vue"],
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "scss/at-rule-no-unknown": true,
+    "scss/selector-no-redundant-nesting-selector": true,
+    "scss/dollar-variable-pattern": null,
+    "scss/at-extend-no-missing-placeholder": true,
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "no-descending-specificity": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["deep", "global", "slotted"]
+      }
+    ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "function",
+          "if",
+          "else",
+          "for",
+          "each",
+          "include",
+          "mixin",
+          "use",
+          "forward",
+          "extend"
+        ]
+      }
+    ],
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["v-deep", "v-global", "v-slotted"]
+      }
+    ]
+  }
+}
