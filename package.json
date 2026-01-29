@@ -1,0 +1,56 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "lint": "run-s lint:*",
+    "lint:oxlint": "oxlint . --fix",
+    "lint:eslint": "eslint . --fix --cache",
+    "lint:style": "stylelint \"src/**/*.{css,scss,vue}\" --fix",
+    "format": "prettier --write --experimental-cli src/"
+  },
+  "dependencies": {
+    "pinia": "^3.0.4",
+    "rest-pipeline-js": "^1.2.1",
+    "vue": "^3.5.27"
+  },
+  "devDependencies": {
+    "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^24.10.9",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vue/eslint-config-typescript": "^14.6.0",
+    "@vue/tsconfig": "^0.8.1",
+    "autoprefixer": "^10.4.23",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-oxlint": "~1.42.0",
+    "eslint-plugin-vue": "~10.7.0",
+    "jiti": "^2.6.1",
+    "npm-run-all2": "^8.0.4",
+    "oxlint": "~1.42.0",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-combine-media-query": "^2.1.0",
+    "postcss-html": "^1.8.1",
+    "postcss-import": "^16.1.1",
+    "prettier": "3.8.1",
+    "sass": "^1.97.3",
+    "stylelint": "^17.0.0",
+    "stylelint-config-recommended-scss": "^17.0.0",
+    "stylelint-config-recommended-vue": "^1.6.1",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-scss": "^7.0.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-vue-devtools": "^8.0.5",
+    "vue-tsc": "^3.2.4"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
+}

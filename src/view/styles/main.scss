@@ -1,0 +1,13 @@
+@import 'https://fonts.googleapis.com/css2?family=Gidole&family=Roboto&family=Roboto&family=Roboto+Condensed:wght@100,300,400,500,600,700,800&display=swap';
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.1;
+
+  &.image-modal-open {
+    overflow: hidden;
+  }
+}
