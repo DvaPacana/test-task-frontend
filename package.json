@@ -1,0 +1,32 @@
+{
+  "name": "test-task-frontend",
+  "version": "0.0.1",
+  "description": "Тестовое задание",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trustmebrogarantee/test-task-frontend.git"
+  },
+  "author": "Oleg Shipitsyn <olegshipitsyn.work@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trustmebrogarantee/test-task-frontend/issues"
+  },
+  "homepage": "https://github.com/trustmebrogarantee/test-task-frontend#readme",
+  "devDependencies": {
+    "@types/node": "^25.2.1",
+    "@vitejs/plugin-vue": "^6.0.4",
+    "@vue/tsconfig": "^0.8.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vue-tsc": "^3.2.4"
+  },
+  "dependencies": {
+    "vue": "^3.5.27"
+  }
+}
